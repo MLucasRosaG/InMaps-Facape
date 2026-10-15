@@ -4,13 +4,15 @@
 
 **Projeto da disciplina de Inovação Tecnológica** · Docente: Luirys Silva · Faculdade de Petrolina – FACAPE · 2026
 
-🔗 **Demo online:** ``
-📋 **Quadro de tarefas:** `-https://trello.com/b/hQ6sRSu3/mapa-de-acessibilidade-facape`
-🎨 **Protótipo no Figma:** `(https://www.figma.com/proto/GrZwTTHMKzWwQ7kTsa0U1D/Prot%C3%B3tipo-InMaps?node-id=12-236&p=f&t=wa9u2qsxNiOoaeFE-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=48%3A111)`
+ **Demo online:** ``
+
+ **Quadro de tarefas:** `-https://trello.com/b/hQ6sRSu3/mapa-de-acessibilidade-facape`
+
+ **Protótipo no Figma:** `(https://www.figma.com/proto/GrZwTTHMKzWwQ7kTsa0U1D/Prot%C3%B3tipo-InMaps?node-id=12-236&p=f&t=wa9u2qsxNiOoaeFE-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=48%3A111)`
 
 ---
 
-## 📌 Sumário
+##  Sumário
 
 1. [Sobre o projeto](#-sobre-o-projeto)
 2. [Objetivos](#-objetivos)
@@ -27,7 +29,7 @@
 
 ---
 
-## 📖 Sobre o projeto
+##  Sobre o projeto
 
 O campus da FACAPE tem vários blocos, e quem tem mobilidade reduzida ou está no campus pela primeira vez muitas vezes não sabe onde ficam as rampas, quais caminhos têm lombadas ou piso irregular e por onde é possível chegar a cada bloco.
 
@@ -35,7 +37,7 @@ Este projeto resolve essa dor com um **mapa web simples, bonito e acessível pel
 
 O MVP é **100% estático**: não tem servidor nem banco de dados. Todos os dados ficam em arquivos JSON dentro do repositório. A gestão dinâmica (cadastrar pontos e rotas por um painel) está planejada para a Fase 2.
 
-## 🎯 Objetivos
+##  Objetivos
 
 **Objetivo geral:** facilitar a navegação e a acessibilidade dentro do campus da FACAPE.
 
@@ -47,7 +49,7 @@ O MVP é **100% estático**: não tem servidor nem banco de dados. Todos os dado
 - Oferecer uma visualização 3D do campus, gerada ou refinada com apoio de IA.
 - Entregar um MVP funcional até o final do semestre, com arquitetura simples e pronta para evoluir.
 
-## ✅ Funcionalidades do MVP
+##  Funcionalidades do MVP
 
 | Funcionalidade | Descrição | Status |
 |---|---|---|
@@ -64,7 +66,7 @@ O MVP é **100% estático**: não tem servidor nem banco de dados. Todos os dado
 
 Backend/API, banco de dados, painel administrativo, cadastro dinâmico de rotas e suporte a outras instituições. Tudo isso está no [Roadmap](#-roadmap).
 
-## 🛠️ Stack tecnológica
+##  Stack tecnológica
 
 | Camada | Tecnologia | Para que serve |
 |---|---|---|
@@ -97,18 +99,18 @@ mapa-acessibilidade-facape/
 ├── README.md                  # Este arquivo
 │
 ├── public/                    # Arquivos estáticos servidos como estão
-│   ├── data/                  # 📊 Dados do mapa em JSON
-│   │   ├── blocos.json        #    Blocos do campus
-│   │   ├── pontos.json        #    Pontos de interesse
-│   │   ├── rampas.json        #    Rampas
-│   │   ├── lombadas.json      #    Lombadas e obstáculos de piso
-│   │   ├── acessos.json       #    Portões, entradas e acessos
-│   │   └── rotas.json         #    Rotas acessíveis
-│   ├── models/                # 🧊 Modelos 3D (.glb / .gltf)
+│   ├── data/                  #  Dados do mapa em JSON
+│   │   ├── blocos.json        #  Blocos do campus
+│   │   ├── pontos.json        #  Pontos de interesse
+│   │   ├── rampas.json        #  Rampas
+│   │   ├── lombadas.json      #  Lombadas e obstáculos de piso
+│   │   ├── acessos.json       #  Portões, entradas e acessos
+│   │   └── rotas.json         #  Rotas acessíveis
+│   ├── models/                #  Modelos 3D (.glb / .gltf)
 │   │   └── campus.glb
 │   └── icons/                 # Ícones dos marcadores (SVG/PNG)
 │
-├── src/                       # 💻 Código-fonte da aplicação
+├── src/                       # Código-fonte da aplicação
 │   ├── main.js                # Inicialização da aplicação
 │   ├── css/                   # Estilos
 │   │   └── style.css
@@ -119,7 +121,7 @@ mapa-acessibilidade-facape/
 │   │   └── ui/                # Componentes de interface (painel de detalhes, filtros)
 │   └── assets/                # Imagens usadas na interface
 │
-├── docs/                      # 📚 Documentação do projeto
+├── docs/                      # Documentação do projeto
 │   ├── relatorio-stack.pdf    # Relatório técnico entregue na disciplina
 │   ├── prototipo/             # Capturas do Figma
 │   └── referencias/           # Mapas, plantas e fotos de referência do campus
@@ -142,7 +144,7 @@ mapa-acessibilidade-facape/
 | `src/js/ui/` | Painel de detalhes, filtros, legenda e menus. |
 | `docs/` | Relatório, protótipo e materiais de referência. |
 
-## 🧩 Modelo de dados (JSON)
+##  Modelo de dados (JSON)
 
 Cada categoria tem um arquivo próprio, o que permite que qualquer membro edite os dados sem conflito. O histórico de mudanças fica registrado pelo Git.
 
@@ -176,7 +178,7 @@ Cada categoria tem um arquivo próprio, o que permite que qualquer membro edite 
 
 > Os campos acima são um ponto de partida.
 
-## 🚀 Como rodar localmente
+##  Como rodar localmente
 
 **Pré-requisitos:** [Node.js](https://nodejs.org/) (versão LTS) e [Git](https://git-scm.com/).
 
@@ -201,7 +203,7 @@ npm run build     # Gera a versão final na pasta dist/
 npm run preview   # Testa a versão final localmente
 ```
 
-## 🌐 Publicação (GitHub Pages)
+##  Publicação (GitHub Pages)
 
 1. No `vite.config.js`, defina o `base` com o nome do repositório:
 
@@ -215,7 +217,7 @@ npm run preview   # Testa a versão final localmente
 3. Publique a pasta `dist/` (manualmente na branch `gh-pages` ou por GitHub Actions usando o `deploy.yml`).
 4. Em **Settings → Pages**, selecione a fonte de publicação e copie o link gerado para o topo deste README.
 
-## 👥 Divisão de responsabilidades
+##  Divisão de responsabilidades
 
 | Módulo | Responsável | Entrega |
 |---|---|---|
@@ -235,7 +237,7 @@ npm run preview   # Testa a versão final localmente
 | `public/data/`, `src/js/data/` | Vinícius |
 | `docs/`, testes e relatórios de ajustes | Luan |
 
-## 🔄 Fluxo de trabalho da equipe
+##  Fluxo de trabalho da equipe
 
 1. **Cada tarefa vira um card** no Trello/ClickUp, com responsável definido.
 2. **Branch por tarefa**, a partir da `main`:
@@ -252,7 +254,7 @@ npm run preview   # Testa a versão final localmente
 4. **Pull Request** para a `main`, com pelo menos um colega revisando.
 5. **Não commitar direto na `main`** e não subir `node_modules/` nem `dist/`.
 
-## 🛣️ Roadmap
+##  Roadmap
 
 ### ✅ MVP (este semestre)
 
@@ -265,7 +267,7 @@ npm run preview   # Testa a versão final localmente
 - [ ] Testes de usabilidade com estudantes
 - [ ] Publicação no GitHub Pages
 
-### 🔮 Fase 2 (futuro)
+###  Fase 2 (futuro)
 
 - [ ] Backend e API (por exemplo, Node.js)
 - [ ] Banco de dados no lugar dos arquivos JSON
