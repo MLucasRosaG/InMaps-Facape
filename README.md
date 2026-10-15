@@ -6,9 +6,9 @@
 
  **Demo online:** ``
 
- **Quadro de tarefas:** `-https://trello.com/b/hQ6sRSu3/mapa-de-acessibilidade-facape`
+ **Quadro de tarefas:** `https://trello.com/b/hQ6sRSu3/mapa-de-acessibilidade-facape`
 
- **Protótipo no Figma:** `(https://www.figma.com/proto/GrZwTTHMKzWwQ7kTsa0U1D/Prot%C3%B3tipo-InMaps?node-id=12-236&p=f&t=wa9u2qsxNiOoaeFE-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=48%3A111)`
+ **Protótipo no Figma:** `https://www.figma.com/proto/GrZwTTHMKzWwQ7kTsa0U1D/Prot%C3%B3tipo-InMaps?node-id=12-236&p=f&t=wa9u2qsxNiOoaeFE-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=48%3A111`
 
 ---
 
