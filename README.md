@@ -14,18 +14,18 @@
 
 ##  Sumário
 
-1. [Sobre o projeto](#-sobre-o-projeto)
-2. [Objetivos](#-objetivos)
-3. [Funcionalidades do MVP](#-funcionalidades-do-mvp)
-4. [Stack tecnológica](#-stack-tecnológica)
-5. [Estrutura de pastas](#-estrutura-de-pastas)
-6. [Modelo de dados (JSON)](#-modelo-de-dados-json)
-7. [Como rodar localmente](#-como-rodar-localmente)
-8. [Publicação (GitHub Pages)](#-publicação-github-pages)
-9. [Divisão de responsabilidades](#-divisão-de-responsabilidades)
-10. [Fluxo de trabalho da equipe](#-fluxo-de-trabalho-da-equipe)
-11. [Roadmap](#-roadmap)
-12. [Equipe](#-equipe)
+1. [Sobre o projeto](#sobre-o-projeto)
+2. [Objetivos](#objetivos)
+3. [Funcionalidades do MVP](#funcionalidades-do-mvp)
+4. [Stack tecnológica](#stack-tecnológica)
+5. [Estrutura de pastas](#estrutura-de-pastas)
+6. [Modelo de dados (JSON)](#modelo-de-dados-json)
+7. [Como rodar localmente](#como-rodar-localmente)
+8. [Publicação (GitHub Pages)](#publicação-github-pages)
+9. [Divisão de responsabilidades](#divisão-de-responsabilidades)
+10. [Fluxo de trabalho da equipe](#fluxo-de-trabalho-da-equipe)
+11. [Roadmap](#roadmap)
+12. [Equipe](#equipe)
 
 ---
 
