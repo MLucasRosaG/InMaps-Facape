@@ -127,7 +127,8 @@ mapa-acessibilidade-facape/
 Os ficheiros JSON funcionam como a fonte única de verdade (*Single Source of Truth*). A sua estrutura modular permite que os membros editem ou adicionem dados sem gerar conflitos de código.
 
 **Exemplo: `public/data/rampas.json`**
-```json
+```
+json
 [
   {
     "id": "rampa-01",
@@ -137,7 +138,7 @@ Os ficheiros JSON funcionam como a fonte única de verdade (*Single Source of Tr
     "observacao": "Possui corrimão e piso antiderrapante"
   }
 ]
-
+```
 ---
 
 ##  Como rodar localmente
