@@ -181,22 +181,14 @@ npm run preview   # Testa a versão final localmente
 | Frontend e mapa | Luiz Eduardo Fernandes Cruz | Estrutura HTML/CSS/JS, renderização 2D, marcadores interativos e destaques de rotas |
 | Visualização do Mapa | Márcio Lucas Rosa Gonçalves | Geração do Mapa 2D via IA, gestão do repositório no GitHub, automação de deploy e tarefas |
 | Dados | Vinícius Silva dos Santos | Modelagem e preenchimento dos ficheiros JSON (blocos, rampas, acessos) |
-| Repositório, publicação e tarefas | Márcio Lucas Rosa Gonçalves | Repositório GitHub, publicação no GitHub Pages e quadro Trello/ClickUp |
+| Repositório, publicação e tarefas | Márcio Lucas Rosa Gonçalves | Repositório GitHub, publicação no GitHub Pages e quadro Trello |
 | Testes de usabilidade | Luan Regis Monteiro | Condução e registo de testes de interface com estudantes no campus da FACAPE |
 | Interface visual | Kelvin Keiti Souza Fukagawa | Garantir a fidelidade da interface com o protótipo do Figma e alinhamento do design |
 
-**Quem mexe em quê no código:**
-
-| Área do repositório | Principal responsável |
-|---|---|
-| `src/js/map/`, `src/js/ui/`, `src/css/`, `index.html` | Luiz Eduardo (com validação visual do Kelvin) |
-| `src/js/three/`, `public/models/` | Márcio |
-| `public/data/`, `src/js/data/` | Vinícius |
-| `docs/`, testes e relatórios de ajustes | Luan |
 
 ##  Fluxo de trabalho da equipe
 
-1. **Cada tarefa vira um card** no Trello/ClickUp, com responsável definido.
+1. **Cada tarefa vira um card** no Trello, com responsável definido.
 2. **Branch por tarefa**, a partir da `main`:
 
    ```bash
