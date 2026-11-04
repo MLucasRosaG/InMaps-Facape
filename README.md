@@ -136,6 +136,9 @@ Os ficheiros JSON funcionam como a fonte única de verdade (*Single Source of Tr
     "observacao": "Possui corrimão e piso antiderrapante"
   }
 ]
+
+---
+
 ##  Como rodar localmente
 
 **Pré-requisitos:** [Node.js](https://nodejs.org/) (versão LTS) e [Git](https://git-scm.com/).
@@ -174,6 +177,8 @@ npm run preview   # Testa a versão final localmente
 3. Publique a pasta `dist/` (manualmente na branch `gh-pages` ou por GitHub Actions usando o `deploy.yml`).
 4. Em **Settings → Pages**, selecione a fonte de publicação e copie o link gerado para o topo deste README.
 
+---
+
 ##  Divisão de responsabilidades
 
 | Módulo | Responsável | Entrega |
@@ -185,6 +190,7 @@ npm run preview   # Testa a versão final localmente
 | Testes de usabilidade | Luan Regis Monteiro | Condução e registo de testes de interface com estudantes no campus da FACAPE |
 | Interface visual | Kelvin Keiti Souza Fukagawa | Garantir a fidelidade da interface com o protótipo do Figma e alinhamento do design |
 
+---
 
 ##  Fluxo de trabalho da equipe
 
@@ -202,6 +208,8 @@ npm run preview   # Testa a versão final localmente
    - `docs: atualiza README`
 4. **Pull Request** para a `main`, com pelo menos um colega revisando.
 5. **Não commitar direto na `main`** e não subir `node_modules/` nem `dist/`.
+
+---
 
 ##  Roadmap
 
@@ -230,6 +238,8 @@ npm run preview   # Testa a versão final localmente
 [ ] Algoritmo dinâmico de Pathfinding (cálculo da menor rota totalmente acessível).
 
 [ ] Suporte a múltiplos campi e novos clientes B2B no Vale do São Francisco.
+
+---
 
 ## 🧑‍💻 Equipe
 
