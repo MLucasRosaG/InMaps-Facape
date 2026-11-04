@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Editor de Pontos – Mapa FACAPE</title>
+<style>
+:root{--bg:#14161c;--panel:#1c1f27;--line:#2c313d;--tx:#e8eaf0;--mut:#8a93a6;--ac:#4f8cff}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--tx);font:14px/1.4 system-ui,sans-serif;display:flex;flex-direction:column}
+header{display:flex;gap:6px;align-items:center;padding:8px 10px;background:var(--panel);border-bottom:1px solid var(--line);flex-wrap:wrap}
+button,select,input,textarea{font:inherit;color:var(--tx);background:#262a35;border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+button{cursor:pointer}button:hover{border-color:var(--ac)}
+button.on{background:var(--ac);border-color:var(--ac);color:#fff}
+button.pri{background:#1f8a4c;border-color:#1f8a4c;color:#fff}
+button.dng{color:#ff7b7b}
+.sp{flex:1}
+main{flex:1;display:flex;min-height:0}
+#vp{flex:1;position:relative;overflow:hidden;background:#0c0d11;touch-action:none;cursor:crosshair}
+#vp.pan{cursor:grab}
+#stage{position:absolute;left:0;top:0;transform-origin:0 0}
+#img{display:block;user-select:none;-webkit-user-drag:none}
+#ov{position:absolute;left:0;top:0}
+#ov [data-cat]{cursor:pointer}
+#hint{position:absolute;left:10px;bottom:10px;background:#000a;padding:4px 10px;border-radius:6px;font-size:12px;pointer-events:none}
+#empty{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;color:var(--mut);pointer-events:none}
+#zoom{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:4px}
+aside{width:320px;background:var(--panel);border-left:1px solid var(--line);overflow:auto;padding:12px;display:flex;flex-direction:column;gap:12px}
+h3{margin:0 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut)}
+label{display:block;font-size:12px;color:var(--mut);margin-top:8px}
+label input:not([type=checkbox]),label select,label textarea{width:100%;margin-top:3px}
+.chk{display:flex;gap:8px;align-items:center;color:var(--tx);font-size:14px}
+.row{display:flex;gap:6px;flex-wrap:wrap}
+.leg{display:flex;align-items:center;gap:8px;padding:2px 0}
+.dot{width:12px;height:12px;border-radius:50%}
+.item{display:block;width:100%;text-align:left;margin:2px 0;padding:4px 8px;background:none;border:1px solid transparent}
+.item.sel{border-color:var(--ac);background:#4f8cff22}
+.cnt{color:var(--mut)}
+@media(max-width:800px){main{flex-direction:column}aside{width:100%;max-height:45%;border-left:0;border-top:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<header>
+  <div class="row" id="tools"></div>
+  <button id="fin" style="display:none" class="pri">Concluir rota (Enter)</button>
+  <div class="sp"></div>
+  <button id="bImg">Carregar imagem</button>
+  <button id="bImp">Importar JSON</button>
+  <button id="bAll" class="pri">Baixar todos os JSON</button>
+</header>
+<main>
+  <div id="vp">
+    <div id="stage"><img id="img" alt="Mapa do campus"><svg id="ov" xmlns="http://www.w3.org/2000/svg"></svg></div>
+    <div id="empty"><div>Coloque <b>Mapa_Facape.jpg</b> na mesma pasta deste arquivo<br>ou clique em “Carregar imagem” (ou arraste a imagem aqui).</div></div>
+    <div id="zoom"><button id="zi">+</button><button id="zo">−</button><button id="zf">⤢</button></div>
+    <div id="hint"></div>
+  </div>
+  <aside>
+    <section><h3>Camadas</h3><div id="legend"></div>
+      <label class="chk"><input type="checkbox" id="names"> Mostrar nomes no mapa</label></section>
+    <section><h3>Item selecionado</h3><div id="form"><span class="cnt">Escolha uma ferramenta e clique no mapa para criar um ponto, ou clique em um marcador para editar.</span></div></section>
+    <section><h3>Itens</h3><div id="list"></div></section>
+    <section><h3>Exportar</h3>
+      <div class="row"><button id="bComb">mapa-completo.json</button><button id="bCopy">Copiar categoria…</button><button id="bClr" class="dng">Limpar tudo</button></div></section>
+  </aside>
+</main>
+<input type="file" id="fImg" accept="image/*" hidden>
+<input type="file" id="fJson" accept=".json,application/json" multiple hidden>
+<script>
+const $=s=>document.querySelector(s);
+const CATS={
+  bloco:{key:'blocos',label:'Bloco',color:'#8b5cf6',L:'B',shape:{id:'',nome:'',descricao:'',posicao:null,acessivel:true},
+    fields:[['nome','Nome'],['descricao','Descrição','area'],['acessivel','Acessível','bool']]},
+  ponto:{key:'pontos',label:'Ponto de interesse',color:'#2f8cff',L:'P',shape:{id:'',nome:'',tipo:'outro',descricao:'',blocoId:'',posicao:null},
+    fields:[['nome','Nome'],['tipo','Tipo','sel',['sala','biblioteca','banheiro','cantina','secretaria','auditorio','estacionamento','outro']],['descricao','Descrição','area'],['blocoId','Bloco','bloco']]},
+  rampa:{key:'rampas',label:'Rampa',color:'#22c55e',L:'R',shape:{id:'',nome:'',blocoId:'',posicao:null,observacao:''},
+    fields:[['nome','Nome'],['blocoId','Bloco','bloco'],['observacao','Observação','area']]},
+  lombada:{key:'lombadas',label:'Lombada / obstáculo',color:'#f59e0b',L:'L',shape:{id:'',nome:'',tipo:'lombada',blocoId:'',posicao:null,observacao:''},
+    fields:[['nome','Nome'],['tipo','Tipo','sel',['lombada','piso irregular','degrau','buraco','outro']],['blocoId','Bloco próximo','bloco'],['observacao','Observação','area']]},
+  acesso:{key:'acessos',label:'Acesso / portão',color:'#ef4444',L:'A',shape:{id:'',nome:'',tipo:'entrada',blocoId:'',posicao:null,acessivel:true,observacao:''},
+    fields:[['nome','Nome'],['tipo','Tipo','sel',['portão','entrada','saída','estacionamento','outro']],['blocoId','Bloco','bloco'],['acessivel','Acessível','bool'],['observacao','Observação','area']]},
+  rota:{key:'rotas',label:'Rota acessível',color:'#14b8a6',L:'→',shape:{id:'',nome:'',acessivel:true,observacao:'',pontos:[]},
+    fields:[['nome','Nome'],['acessivel','Acessível','bool'],['observacao','Observação','area']]}
+};
+const KEYS=Object.keys(CATS);
+const LS='facape-editor-v1';
+let data={},vis={},tool='sel',sel=null,draft=[],W=0,H=0,imgName='Mapa_Facape.jpg';
+KEYS.forEach(c=>{data[CATS[c].key]=[];vis[c]=true});
+const v={x:0,y:0,s:1};
+const catByKey=k=>KEYS.find(c=>CATS[c].key===k);
+const arr=c=>data[CATS[c].key];
+
+/* ---------- persistência ---------- */
+function save(){try{localStorage.setItem(LS,JSON.stringify(data))}catch(e){}}
+function load(){try{const d=JSON.parse(localStorage.getItem(LS)||'null');if(d)KEYS.forEach(c=>{const k=CATS[c].key;if(Array.isArray(d[k]))data[k]=d[k]})}catch(e){}}
+
+/* ---------- ferramentas ---------- */
+function buildTools(){
+  const t=$('#tools');t.innerHTML='';
+  const mk=(id,txt,title)=>{const b=document.createElement('button');b.textContent=txt;b.title=title;b.dataset.t=id;b.onclick=()=>setTool(id);t.appendChild(b)};
+  mk('sel','✋ Selecionar','Selecionar / mover (V)');
+  KEYS.forEach((c,i)=>mk(c,(i+1)+' '+CATS[c].label.split(' ')[0],CATS[c].label+' ('+(i+1)+')'));
+  setTool('sel');
+  $('#legend').innerHTML=KEYS.map(c=>`<label class="leg chk" style="margin:0"><input type="checkbox" data-v="${c}" checked><span class="dot" style="background:${CATS[c].color}"></span>${CATS[c].label} <span class="cnt" id="n-${c}"></span></label>`).join('');
+  $('#legend').onchange=e=>{vis[e.target.dataset.v]=e.target.checked;render()};
+}
+function setTool(t){
+  if(draft.length&&t!=='rota')draft=[];
+  tool=t;
+  document.querySelectorAll('#tools button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+  $('#fin').style.display=t==='rota'?'':'none';
+  $('#vp').classList.toggle('pan',t==='sel');
+  hint();render();
+}
+function hint(msg){
+  $('#hint').textContent=msg||(tool==='sel'?'Arraste para mover o mapa · arraste um marcador para reposicionar · scroll = zoom':
+    tool==='rota'?'Clique para adicionar vértices · Enter ou duplo clique conclui · Esc cancela':
+    'Clique no mapa para criar: '+CATS[tool].label+' · espaço/botão direito + arrastar = mover mapa');
+}
+
+/* ---------- viewport ---------- */
+function applyView(){$('#stage').style.transform=`translate(${v.x}px,${v.y}px) scale(${v.s})`;render()}
+function fit(){
+  const r=$('#vp').getBoundingClientRect();if(!W)return;
+  v.s=Math.min(r.width/W,r.height/H)*.98;v.x=(r.width-W*v.s)/2;v.y=(r.height-H*v.s)/2;applyView();
+}
+function zoomAt(f,cx,cy){
+  const r=$('#vp').getBoundingClientRect();cx=cx??r.width/2;cy=cy??r.height/2;
+  const ns=Math.min(12,Math.max(.1,v.s*f));
+  v.x=cx-(cx-v.x)*(ns/v.s);v.y=cy-(cy-v.y)*(ns/v.s);v.s=ns;applyView();
+}
+const toPt=e=>{const r=$('#vp').getBoundingClientRect();return{x:Math.round((e.clientX-r.left-v.x)/v.s),y:Math.round((e.clientY-r.top-v.y)/v.s)}};
+
+/* ---------- imagem ---------- */
+const img=$('#img');
+img.onload=()=>{W=img.naturalWidth;H=img.naturalHeight;img.style.width=W+'px';img.style.height=H+'px';
+  const o=$('#ov');o.setAttribute('width',W);o.setAttribute('height',H);o.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  $('#empty').style.display='none';fit()};
+img.onerror=()=>{$('#empty').style.display='flex'};
+function setImage(f){imgName=f.name;img.src=URL.createObjectURL(f)}
+img.src='Mapa_Facape.jpg';
+
+/* ---------- dados ---------- */
+function nextId(c){
+  const p=c+'-';let m=0;arr(c).forEach(i=>{const n=parseInt(String(i.id).replace(p,''),10);if(!isNaN(n)&&n>m)m=n});
+  return p+String(m+1).padStart(2,'0');
+}
+function blocoOpts(sel){return '<option value="">—</option>'+data.blocos.map(b=>`<option value="${b.id}"${b.id===sel?' selected':''}>${esc(b.nome||b.id)} (${b.id})</option>`).join('')}
+const esc=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+const find=(c,id)=>arr(c).find(i=>i.id===id);
+function add(c,p){
+  const it=JSON.parse(JSON.stringify(CATS[c].shape));it.id=nextId(c);
+  if(c!=='rota')it.posicao=p;
+  if('nome' in it)it.nome=CATS[c].label.split(' ')[0]+' '+it.id.split('-')[1];
+  arr(c).push(it);return it;
+}
+function place(p){
+  if(tool==='sel')return;
+  if(tool==='rota'){draft.push(p);render();return}
+  const it=add(tool,p);select(tool,it.id);save();
+}
+function finishRota(){
+  if(draft.length>1){const it=add('rota');it.pontos=draft;draft=[];select('rota',it.id);save()}
+  else draft=[];
+  render();
+}
+function remove(){
+  if(!sel)return;const a=arr(sel.cat),i=a.findIndex(x=>x.id===sel.id);if(i>=0)a.splice(i,1);
+  sel=null;save();renderAll();
+}
+
+/* ---------- seleção / formulário ---------- */
+function select(cat,id){sel=cat?{cat,id}:null;renderAll()}
+function buildForm(){
+  const f=$('#form');
+  if(!sel){f.innerHTML='<span class="cnt">Escolha uma ferramenta e clique no mapa para criar um ponto, ou clique em um marcador para editar.</span>';return}
+  const it=find(sel.cat,sel.id);if(!it){sel=null;return buildForm()}
+  const C=CATS[sel.cat];
+  let h=`<b style="color:${C.color}">${C.label}</b>
+  <label>ID<input data-k="id" value="${esc(it.id)}"></label>`;
+  C.fields.forEach(([k,l,t,o])=>{
+    const val=it[k];
+    if(t==='area')h+=`<label>${l}<textarea rows="2" data-k="${k}">${esc(val)}</textarea></label>`;
+    else if(t==='bool')h+=`<label class="chk"><input type="checkbox" data-k="${k}"${val?' checked':''}>${l}</label>`;
+    else if(t==='sel')h+=`<label>${l}<select data-k="${k}">${o.map(x=>`<option${x===val?' selected':''}>${x}</option>`).join('')}</select></label>`;
+    else if(t==='bloco')h+=`<label>${l}<select data-k="${k}">${blocoOpts(val)}</select></label>`;
+    else h+=`<label>${l}<input data-k="${k}" value="${esc(val)}"></label>`;
+  });
+  if(it.posicao)h+=`<label>Posição (px da imagem)<span class="row"><input data-p="x" type="number" value="${it.posicao.x}" style="width:48%"><input data-p="y" type="number" value="${it.posicao.y}" style="width:48%"></span></label>`;
+  else h+=`<label>Vértices<div class="cnt">${it.pontos.length} pontos</div></label>`;
+  h+=`<div class="row" style="margin-top:10px"><button class="dng" id="del">Excluir (Del)</button></div>`;
+  f.innerHTML=h;
+  $('#del').onclick=remove;
+}
+$('#form').addEventListener('input',e=>{
+  const t=e.target,it=sel&&find(sel.cat,sel.id);if(!it)return;
+  if(t.dataset.p){it.posicao[t.dataset.p]=Math.round(+t.value||0)}
+  else if(t.dataset.k&&t.dataset.k!=='id'){it[t.dataset.k]=t.type==='checkbox'?t.checked:t.value}
+  save();render();renderList();
+});
+$('#form').addEventListener('change',e=>{
+  const t=e.target;if(t.dataset.k!=='id')return;
+  const it=find(sel.cat,sel.id),nid=t.value.trim();
+  if(!nid||arr(sel.cat).some(x=>x!==it&&x.id===nid)){t.value=it.id;return}
+  if(sel.cat==='bloco')KEYS.forEach(c=>arr(c).forEach(x=>{if(x.blocoId===it.id)x.blocoId=nid}));
+  it.id=nid;sel.id=nid;save();renderAll();
+});
+
+/* ---------- render ---------- */
+function render(){
+  const s=v.s,names=$('#names').checked;let h='';
+  const polyPts=a=>a.map(p=>p.x+','+p.y).join(' ');
+  if(vis.rota)data.rotas.forEach(r=>{
+    const on=sel&&sel.cat==='rota'&&sel.id===r.id,col=r.acessivel?CATS.rota.color:'#f97316';
+    h+=`<polyline data-cat="rota" data-id="${r.id}" points="${polyPts(r.pontos)}" fill="none" stroke="#000" stroke-opacity=".5" stroke-width="${on?9:7}" vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline data-cat="rota" data-id="${r.id}" points="${polyPts(r.pontos)}" fill="none" stroke="${col}" stroke-width="${on?5:4}" stroke-dasharray="${r.acessivel?'':'10 6'}" vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round"/>`;
+    if(on)r.pontos.forEach((p,i)=>h+=`<g data-cat="rota" data-id="${r.id}" data-vi="${i}" transform="translate(${p.x} ${p.y}) scale(${1/s})"><circle r="7" fill="#fff" stroke="${col}" stroke-width="3"/></g>`);
+    else if(names&&r.pontos[0])h+=lbl(r.pontos[0],r.nome,s);
+  });
+  if(draft.length){
+    h+=`<polyline points="${polyPts(draft)}" fill="none" stroke="${CATS.rota.color}" stroke-width="3" stroke-dasharray="6 4" vector-effect="non-scaling-stroke"/>`;
+    draft.forEach(p=>h+=`<g transform="translate(${p.x} ${p.y}) scale(${1/s})"><circle r="5" fill="${CATS.rota.color}" stroke="#fff" stroke-width="2"/></g>`);
+  }
+  KEYS.filter(c=>c!=='rota'&&vis[c]).forEach(c=>arr(c).forEach(it=>{
+    if(!it.posicao)return;
+    const C=CATS[c],on=sel&&sel.cat===c&&sel.id===it.id,p=it.posicao;
+    h+=`<g data-cat="${c}" data-id="${it.id}" transform="translate(${p.x} ${p.y}) scale(${1/s})">
+      <circle r="${on?15:12}" fill="${C.color}" stroke="${on?'#ffe14d':'#fff'}" stroke-width="${on?4:2.5}"/>
+      <text text-anchor="middle" dy=".35em" font-size="12" font-weight="700" fill="#fff" pointer-events="none" font-family="system-ui,sans-serif">${C.L}</text></g>`;
+    if(names||on)h+=lbl({x:p.x,y:p.y+18/s},it.nome||it.id,s);
+  }));
+  $('#ov').innerHTML=h;
+}
+function lbl(p,t,s){return `<text x="${p.x}" y="${p.y}" transform="translate(0 0)" text-anchor="middle" dy="${14/s}" font-size="${12/s}" font-weight="600" fill="#fff" stroke="#000" stroke-width="${3/s}" paint-order="stroke" pointer-events="none" font-family="system-ui,sans-serif">${esc(t)}</text>`}
+function renderList(){
+  KEYS.forEach(c=>{const n=$('#n-'+c);if(n)n.textContent='('+arr(c).length+')'});
+  $('#list').innerHTML=KEYS.map(c=>arr(c).map(it=>`<button class="item${sel&&sel.cat===c&&sel.id===it.id?' sel':''}" data-cat="${c}" data-id="${it.id}"><span class="dot" style="display:inline-block;background:${CATS[c].color};margin-right:6px"></span>${esc(it.nome||it.id)} <span class="cnt">${it.id}</span></button>`).join('')).join('')||'<span class="cnt">Nenhum item ainda.</span>';
+}
+$('#list').onclick=e=>{
+  const b=e.target.closest('[data-cat]');if(!b)return;
+  select(b.dataset.cat,b.dataset.id);
+  const it=find(b.dataset.cat,b.dataset.id),p=it.posicao||it.pontos[0];
+  if(p){const r=$('#vp').getBoundingClientRect();v.x=r.width/2-p.x*v.s;v.y=r.height/2-p.y*v.s;applyView()}
+};
+function renderAll(){buildForm();renderList();render()}
+$('#names').onchange=render;
+
+/* ---------- ponteiro ---------- */
+let space=false,drag=null,pan=null,pend=null;
+const vp=$('#vp');
+vp.addEventListener('pointerdown',e=>{
+  if(e.target.closest('#zoom'))return;
+  vp.setPointerCapture(e.pointerId);
+  const m=e.target.closest('[data-cat]');
+  if(m&&e.button===0&&!space){
+    select(m.dataset.cat,m.dataset.id);
+    if(m.dataset.cat!=='rota'||m.dataset.vi!==undefined)drag={cat:m.dataset.cat,id:m.dataset.id,vi:m.dataset.vi};
+    return;
+  }
+  if(tool==='sel'||e.button!==0||space)pan={x:e.clientX,y:e.clientY,vx:v.x,vy:v.y,moved:false};
+  else pend={x:e.clientX,y:e.clientY};
+});
+vp.addEventListener('pointermove',e=>{
+  const p=toPt(e);if(W)hint((tool==='sel'?'':CATS[tool]?.label+' · ')+`x: ${p.x}  y: ${p.y}`);
+  if(drag){
+    const it=find(drag.cat,drag.id);if(!it)return;
+    const q={x:Math.max(0,Math.min(W,p.x)),y:Math.max(0,Math.min(H,p.y))};
+    if(drag.vi!==undefined)it.pontos[drag.vi]=q;else it.posicao=q;
+    render();
+  }else if(pan){
+    const dx=e.clientX-pan.x,dy=e.clientY-pan.y;
+    if(Math.abs(dx)+Math.abs(dy)>4)pan.moved=true;
+    v.x=pan.vx+dx;v.y=pan.vy+dy;applyView();
+  }
+});
+vp.addEventListener('pointerup',e=>{
+  if(drag){save();buildForm();renderList()}
+  else if(pan&&!pan.moved&&tool==='sel'&&e.button===0){select(null)}
+  else if(pend&&Math.hypot(e.clientX-pend.x,e.clientY-pend.y)<5)place(toPt(e));
+  drag=pan=pend=null;
+});
+vp.addEventListener('contextmenu',e=>e.preventDefault());
+vp.addEventListener('dblclick',e=>{if(tool==='rota'){if(draft.length>1)draft.pop();finishRota()}});
+vp.addEventListener('wheel',e=>{e.preventDefault();const r=vp.getBoundingClientRect();zoomAt(e.deltaY<0?1.15:1/1.15,e.clientX-r.left,e.clientY-r.top)},{passive:false});
+$('#zi').onclick=()=>zoomAt(1.3);$('#zo').onclick=()=>zoomAt(1/1.3);$('#zf').onclick=fit;
+$('#fin').onclick=finishRota;
+window.addEventListener('resize',()=>{if(W)applyView()});
+
+/* ---------- teclado ---------- */
+addEventListener('keydown',e=>{
+  if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;
+  if(e.code==='Space'){space=true;vp.classList.add('pan');e.preventDefault();return}
+  if(e.key==='Delete'||e.key==='Backspace')remove();
+  else if(e.key==='Escape'){draft=[];select(null);setTool('sel')}
+  else if(e.key==='Enter'&&tool==='rota')finishRota();
+  else if(e.key.toLowerCase()==='v')setTool('sel');
+  else if(/^[1-6]$/.test(e.key))setTool(KEYS[+e.key-1]);
+});
+addEventListener('keyup',e=>{if(e.code==='Space'){space=false;vp.classList.toggle('pan',tool==='sel')}});
+
+/* ---------- exportar / importar ---------- */
+function dl(name,obj){
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}));
+  a.download=name;document.body.appendChild(a);a.click();a.remove();
+}
+$('#bAll').onclick=()=>KEYS.forEach((c,i)=>setTimeout(()=>dl(CATS[c].key+'.json',arr(c)),i*350));
+$('#bComb').onclick=()=>dl('mapa-completo.json',{imagem:{arquivo:imgName,largura:W,altura:H},...data});
+$('#bCopy').onclick=async()=>{
+  const n=prompt('Qual categoria copiar? ('+KEYS.map(c=>CATS[c].key).join(', ')+')','rampas');
+  const c=KEYS.find(c=>CATS[c].key===n);if(!c)return;
+  try{await navigator.clipboard.writeText(JSON.stringify(arr(c),null,2));hint('JSON de '+n+' copiado!')}catch(e){hint('Não foi possível copiar')}
+};
+$('#bClr').onclick=()=>{if(confirm('Apagar TODOS os itens? (Exporte antes se precisar.)')){KEYS.forEach(c=>data[CATS[c].key]=[]);sel=null;save();renderAll()}};
+async function importFiles(files){
+  for(const f of files){
+    try{
+      const j=JSON.parse(await f.text());
+      if(Array.isArray(j)){const c=KEYS.find(c=>f.name.toLowerCase().includes(CATS[c].key.slice(0,-1)));if(c)data[CATS[c].key]=j}
+      else KEYS.forEach(c=>{if(Array.isArray(j[CATS[c].key]))data[CATS[c].key]=j[CATS[c].key]});
+    }catch(e){alert('Arquivo inválido: '+f.name)}
+  }
+  sel=null;save();renderAll();
+}
+$('#bImg').onclick=()=>$('#fImg').click();
+$('#bImp').onclick=()=>$('#fJson').click();
+$('#fImg').onchange=e=>e.target.files[0]&&setImage(e.target.files[0]);
+$('#fJson').onchange=e=>{importFiles(e.target.files);e.target.value=''};
+vp.addEventListener('dragover',e=>e.preventDefault());
+vp.addEventListener('drop',e=>{
+  e.preventDefault();const fs=[...e.dataTransfer.files];
+  const im=fs.find(f=>f.type.startsWith('image/'));if(im)setImage(im);
+  const js=fs.filter(f=>/\.json$/i.test(f.name));if(js.length)importFiles(js);
+});
+
+/* ---------- início ---------- */
+load();buildTools();renderAll();
+</script>
+</body>
+</html>
