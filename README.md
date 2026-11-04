@@ -1,183 +1,141 @@
-#  Mapa de Acessibilidade FACAPE
+# 📍 Mapa de Acessibilidade FACAPE — InMap
 
-> Mapa web interativo do campus da Faculdade de Petrolina (FACAPE) com foco em acessibilidade: blocos, pontos de interesse, rampas, lombadas e acessos, em 2D e 3D.
+> Mapa web interativo e responsivo do campus da Faculdade de Petrolina (FACAPE) focado em acessibilidade e navegação inclusiva: visualização por blocos, pontos de interesse, rampas, lombadas, pisos táteis e acessos adaptados em 2D.
 
 **Projeto da disciplina de Inovação Tecnológica** · Docente: Luirys Silva · Faculdade de Petrolina – FACAPE · 2026
 
- **Demo online:** ``
-
- **Quadro de tarefas:** `https://trello.com/b/hQ6sRSu3/mapa-de-acessibilidade-facape`
-
- **Protótipo no Figma:** `https://www.figma.com/proto/GrZwTTHMKzWwQ7kTsa0U1D/Prot%C3%B3tipo-InMaps?node-id=12-236&p=f&t=wa9u2qsxNiOoaeFE-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=48%3A111`
+🔗 **Demo online:** `https://<usuario>.github.io/mapa-acessibilidade-facape/`  
+📋 **Quadro de tarefas:** `https://trello.com/b/hQ6sRSu3/mapa-de-acessibilidade-facape`  
+🎨 **Protótipo no Figma:** `https://www.figma.com/proto/GrZwTTHMKzWwQ7kTsa0U1D/Prot%C3%B3tipo-InMaps`
 
 ---
 
-##  Sumário
+## 📌 Sumário
 
-1. [Sobre o projeto](#sobre-o-projeto)
-2. [Objetivos](#objetivos)
-3. [Funcionalidades do MVP](#funcionalidades-do-mvp)
-4. [Stack tecnológica](#stack-tecnológica)
-5. [Estrutura de pastas](#estrutura-de-pastas)
-6. [Modelo de dados (JSON)](#modelo-de-dados-json)
-7. [Como rodar localmente](#como-rodar-localmente)
-8. [Publicação (GitHub Pages)](#publicação-github-pages)
-9. [Divisão de responsabilidades](#divisão-de-responsabilidades)
-10. [Fluxo de trabalho da equipe](#fluxo-de-trabalho-da-equipe)
-11. [Roadmap](#roadmap)
-12. [Equipe](#equipe)
+1. [Sobre o projeto](#-sobre-o-projeto)
+2. [Objetivos](#-objetivos)
+3. [Funcionalidades do MVP](#-funcionalidades-do-mvp)
+4. [Stack tecnológica](#-stack-tecnológica)
+5. [Estrutura de pastas](#-estrutura-de-pastas)
+6. [Modelo de dados (JSON)](#-modelo-de-dados-json)
+7. [Como rodar localmente](#-como-rodar-localmente)
+8. [Publicação (GitHub Pages)](#-publicação-github-pages)
+9. [Divisão de responsabilidades](#-divisão-de-responsabilidades)
+10. [Fluxo de trabalho da equipe](#-fluxo-de-trabalho-da-equipe)
+11. [Roadmap](#-roadmap)
+12. [Equipe](#-equipe)
 
 ---
 
-##  Sobre o projeto
+## 🎯 Sobre o projeto
 
-O campus da FACAPE tem vários blocos, e quem tem mobilidade reduzida ou está no campus pela primeira vez muitas vezes não sabe onde ficam as rampas, quais caminhos têm lombadas ou piso irregular e por onde é possível chegar a cada bloco.
+O campus da FACAPE possui diversos blocos e instalações espalhadas. Para pessoas com mobilidade reduzida, deficiência física, idosos ou visitantes iniciantes, identificar onde ficam as rampas, quais caminhos possuem lombadas/piso irregular e qual é a rota acessível até cada bloco é um desafio diário.
 
-Este projeto resolve essa dor com um **mapa web simples, bonito e acessível pelo celular**, que mostra o campus dividido em blocos e destaca os elementos de acessibilidade.
+O **InMap** resolve essa dor com um **mapa web 2D vetorizado, ultra leve, moderno e responsivo**, focado em dispositivos móveis. A plataforma exibe o campus organizado por blocos e destaca nativamente as rotas e elementos de acessibilidade.
 
-O MVP é **100% estático**: não tem servidor nem banco de dados. Todos os dados ficam em arquivos JSON dentro do repositório. A gestão dinâmica (cadastrar pontos e rotas por um painel) está planejada para a Fase 2.
+> **Diretriz do MVP:** A solução é 100% estática (Mobile-First, Client-side). Não necessita de servidores nem de bases de dados nesta etapa. Todos os metadados e marcadores são gerenciados via ficheiros JSON versionados no repositório. A gestão dinâmica via painel administrativo e backend está prevista para a Fase 2.
 
-##  Objetivos
+---
 
-**Objetivo geral:** facilitar a navegação e a acessibilidade dentro do campus da FACAPE.
+## 🏁 Objetivos
+
+**Objetivo geral:** Facilitar a micro-navegação e garantir acessibilidade espacial inclusiva dentro do campus da FACAPE.
 
 **Objetivos específicos:**
+- Representar o campus em um mapa 2D vetorizado e divido por blocos.
+- Destacar marcadores de acessibilidade (rampas, lombadas, piso tátil, portões adaptados e banheiros acessíveis).
+- Permitir a seleção e filtragem interativa de pontos de interesse por categoria.
+- Oferecer uma interface de alta performance e carregamento instantâneo em qualquer smartphone (incluindo modelos de entrada).
+- Entregar um MVP funcional, validado e com custo zero de infraestrutura até ao final do semestre.
 
-- Representar o campus dividido em blocos, com identificação clara de cada um.
-- Marcar pontos de acesso, rampas, lombadas e outros elementos relevantes de acessibilidade.
-- Exibir detalhes de cada ponto ao selecionar no mapa.
-- Oferecer uma visualização 3D do campus, gerada ou refinada com apoio de IA.
-- Entregar um MVP funcional até o final do semestre, com arquitetura simples e pronta para evoluir.
+---
 
-##  Funcionalidades do MVP
+## ⚡ Funcionalidades do MVP
 
 | Funcionalidade | Descrição | Status |
 |---|---|---|
-| Mapa por blocos | Campus dividido em blocos selecionáveis | 🔲 A fazer |
-| Pontos de interesse | Ao clicar, exibe nome, descrição e tipo do ponto | 🔲 A fazer |
-| Destaque de acessibilidade | Rampas, lombadas e acessos com ícones e cores próprios | 🔲 A fazer |
-| Filtros | Mostrar ou ocultar categorias (ex.: só rampas) | 🔲 A fazer |
-| Visualização 3D | Modelo 3D do campus navegável no navegador | 🔲 A fazer |
-| Layout responsivo | Funciona bem no celular e no computador | 🔲 A fazer |
+| **Mapa por blocos** | Visualização vetorizada 2D do campus com blocos interativos | 🔲 A fazer |
+| **Pontos de interesse** | Exibição de detalhes ao selecionar qualquer bloco ou ponto | 🔲 A fazer |
+| **Destaque de acessibilidade** | Ícones e sinalizações visuais exclusivas para rampas, acessos e lombadas | 🔲 A fazer |
+| **Filtros dinâmicos** | Exibir ou ocultar categorias específicas (ex.: *Apenas Rampas*) | 🔲 A fazer |
+| **Layout Responsivo** | Interface adaptada primariamente para telas de smartphones | 🔲 A fazer |
 
-> Atualize a coluna *Status* conforme o projeto avançar (🔲 A fazer · 🚧 Em andamento · ✅ Concluído).
+> *Legenda de status: 🔲 A fazer · 🚧 Em andamento · ✅ Concluído*
 
-### Fora do escopo do MVP
+### ⛔ Fora do escopo do MVP
+Servidores/API backend, bases de dados relacionais, painel administrativo dinâmico e suporte a múltiplos complexos. Todos mapeados no [Roadmap](#-roadmap).
 
-Backend/API, banco de dados, painel administrativo, cadastro dinâmico de rotas e suporte a outras instituições. Tudo isso está no [Roadmap](#-roadmap).
+---
 
-##  Stack tecnológica
+## 🛠️ Stack tecnológica
 
-| Camada | Tecnologia | Para que serve |
+| Camada | Tecnologia | Justificativa |
 |---|---|---|
-| Frontend | **HTML5, CSS3 e JavaScript** | Estrutura, estilo e lógica do mapa |
-| Build/dev | **Vite** | Servidor local rápido e build otimizado para publicação |
-| 3D | **Three.js** | Exibir o modelo 3D do campus no navegador |
-| Estilo (opcional) | **Tailwind CSS** | Agilizar a estilização |
-| Backend | *Não aplicável ao MVP* | Previsto para a Fase 2 |
-| Base de dados | *Não aplicável ao MVP* | Dados em JSON versionado no repositório |
-| Hospedagem | **GitHub Pages** | Link público e gratuito (Netlify/Vercel são alternativas) |
-| Gestão de tarefas | **Trello / ClickUp** | Acompanhamento das tarefas de desenvolvimento |
+| **Frontend Base** | **HTML5, CSS3, JavaScript (ES6+)** | Estruturação semântica, estilos leves e lógica leve de manipulação do DOM e marcadores |
+| **Build & Dev** | **Vite** | Servidor de desenvolvimento ultrarrápido e otimização automatizada para produção |
+| **Renderização Visual** | **SVG / Canvas 2D Interativo** | Visualização leve e vetorizada do mapa sem sobrecarregar o hardware do celular |
+| **Dados** | **JSON Local Versionado** | Ficheiros de dados locais imitando a resposta de uma API REST para fácil transição futura |
+| **Hospedagem** | **GitHub Pages** | Alojamento estático público, gratuito e com integração contínua (CI/CD) |
+| **Gestão do Projeto** | **Trello / ClickUp** | Acompanhamento de sprints e quadro Kanban de tarefas |
 
-**Papel da IA:** o modelo 3D do campus é gerado ou refinado com uma ferramenta de IA, exportado em formato **glTF/GLB** e exibido pelo Three.js. A IA é apoio visual e reforça o caráter inovador do projeto, mas a lógica do mapa não depende dela.
+### 💡 Por que esta stack?
+- **Desempenho e Leveza (Mobile-First):** O mapa 2D é processado instantaneamente sem o consumo elevado de memória/GPU exigido por bibliotecas 3D (Web-GL/Three.js), garantindo uso fluído em qualquer telemóvel.
+- **Foco no Core Feature:** Resolve a dor real do utilizador (localizar rampas e caminhos acessíveis) sem perder tempo com configurações de backend nesta fase de validação.
+- **Zero Custos:** Arquivos estáticos alojados gratuitamente no GitHub Pages sem manutenção de infraestrutura.
+- **Apoio da IA:** A ilustração vetorizada e o esquema gráfico do mapa da FACAPE são vetorizados e refinados com ferramentas de IA generativa para um acabamento visual moderno.
 
-### Por que essa stack?
-
-- **Simplicidade e velocidade:** curva de aprendizagem rápida e resultado imediato no navegador.
-- **Foco no core feature:** o que resolve a dor do usuário é visualizar blocos, rampas e acessos. Servidor e banco consumiriam tempo sem agregar a isso.
-- **Custo zero:** arquivos estáticos são hospedados gratuitamente, sem manutenção de servidor.
-- **Evolução facilitada:** os dados em JSON podem ser reaproveitados quase sem mudança quando houver um backend.
+---
 
 ## 📁 Estrutura de pastas
 
 ```
 mapa-acessibilidade-facape/
-├── index.html                 # Página principal (ponto de entrada do Vite)
-├── package.json               # Dependências e scripts do projeto
-├── vite.config.js             # Configuração do Vite (inclui o base do GitHub Pages)
-├── .gitignore                 # Arquivos ignorados pelo Git (node_modules, dist...)
-├── README.md                  # Este arquivo
+├── index.html                 # Ponto de entrada HTML da aplicação
+├── package.json               # Scripts e dependências do projeto
+├── vite.config.js             # Configuração do Vite (com 'base' para o GitHub Pages)
+├── .gitignore                 # Arquivos ignorados pelo Git (node_modules, dist)
+├── README.md                  # Documentação do repositório
 │
-├── public/                    # Arquivos estáticos servidos como estão
-│   ├── data/                  #  Dados do mapa em JSON
-│   │   ├── blocos.json        #  Blocos do campus
-│   │   ├── pontos.json        #  Pontos de interesse
-│   │   ├── rampas.json        #  Rampas
-│   │   ├── lombadas.json      #  Lombadas e obstáculos de piso
-│   │   ├── acessos.json       #  Portões, entradas e acessos
-│   │   └── rotas.json         #  Rotas acessíveis
-│   ├── models/                #  Modelos 3D (.glb / .gltf)
-│   │   └── campus.glb
-│   └── icons/                 # Ícones dos marcadores (SVG/PNG)
+├── public/                    # Ficheiros estáticos servidos diretamente
+│   ├── data/                  # Base de dados em JSON
+│   │   ├── blocos.json        # Mapeamento dos blocos do campus
+│   │   ├── pontos.json        # Pontos de interesse gerais
+│   │   ├── rampas.json        # Localização de rampas de acesso
+│   │   ├── lombadas.json      # Lombadas e obstáculos do solo
+│   │   └── acessos.json       # Portões e entradas adaptadas
+│   ├── icons/                 # Marcadores e ícones da interface (SVG/PNG)
+│   └── images/                # Imagens e mapa vetorizado de base 2D
 │
 ├── src/                       # Código-fonte da aplicação
-│   ├── main.js                # Inicialização da aplicação
-│   ├── css/                   # Estilos
-│   │   └── style.css
-│   ├── js/
-│   │   ├── map/               # Lógica do mapa 2D (blocos, marcadores, seleção)
-│   │   ├── three/             # Cena 3D (câmera, luzes, carregamento do modelo)
-│   │   ├── data/              # Funções que carregam e tratam os JSON
-│   │   └── ui/                # Componentes de interface (painel de detalhes, filtros)
-│   └── assets/                # Imagens usadas na interface
+│   ├── main.js                # Ficheiro principal de inicialização
+│   ├── css/
+│   │   └── style.css          # Estilos gerais e responsividade
+│   └── js/
+│       ├── map/               # Lógica de renderização 2D, marcadores e zoom/pan
+│       ├── data/              # Funções de carregamento (fetch) dos ficheiros JSON
+│       └── ui/                # Controladores do painel lateral, filtros e legenda
 │
-├── docs/                      # Documentação do projeto
-│   ├── relatorio-stack.pdf    # Relatório técnico entregue na disciplina
-│   ├── prototipo/             # Capturas do Figma
-│   └── referencias/           # Mapas, plantas e fotos de referência do campus
-│
-└── .github/
-    └── workflows/
-        └── deploy.yml         # (opcional) Publicação automática no GitHub Pages
-```
+└── docs/                      # Documentação técnica e académica
+├── relatorio-stack.pdf    # Relatório formal da disciplina
+└── prototipo/             # Exportações do protótipo do Figma
 
-### O que cada pasta faz
+---
 
-| Pasta | Responsabilidade |
-|---|---|
-| `public/data/` | Fonte única de verdade dos dados. Para adicionar uma rampa ou ponto, basta editar o JSON correspondente, sem mexer no código. |
-| `public/models/` | Guarda o modelo 3D do campus exportado em GLB/glTF. |
-| `public/icons/` | Ícones usados nos marcadores de cada tipo de ponto. |
-| `src/js/map/` | Renderização do mapa em blocos, clique, seleção e destaque. |
-| `src/js/three/` | Tudo que é 3D: cena, câmera, controles e carregamento do modelo. |
-| `src/js/data/` | Leitura dos JSON e conversão para o formato usado pela interface. |
-| `src/js/ui/` | Painel de detalhes, filtros, legenda e menus. |
-| `docs/` | Relatório, protótipo e materiais de referência. |
+## 📋 Modelo de dados (JSON)
 
-##  Modelo de dados (JSON)
-
-Cada categoria tem um arquivo próprio, o que permite que qualquer membro edite os dados sem conflito. O histórico de mudanças fica registrado pelo Git.
-
-**Exemplo: `public/data/blocos.json`**
-
-```json
-[
-  {
-    "id": "bloco-11",
-    "nome": "Bloco 11",
-    "descricao": "Descrição do bloco",
-    "posicao": { "x": 120, "y": 340 },
-    "acessivel": true
-  }
-]
-```
+Os ficheiros JSON funcionam como a fonte única de verdade (*Single Source of Truth*). A sua estrutura modular permite que os membros editem ou adicionem dados sem gerar conflitos de código.
 
 **Exemplo: `public/data/rampas.json`**
-
 ```json
 [
   {
     "id": "rampa-01",
-    "nome": "Rampa de acesso ao Bloco 11",
+    "nome": "Rampa do Bloco 11",
     "blocoId": "bloco-11",
-    "posicao": { "x": 118, "y": 352 },
-    "observacao": "Piso antiderrapante"
+    "posicao": { "x": 120, "y": 340 },
+    "observacao": "Possui corrimão e piso antiderrapante"
   }
 ]
-```
-
-> Os campos acima são um ponto de partida.
-
 ##  Como rodar localmente
 
 **Pré-requisitos:** [Node.js](https://nodejs.org/) (versão LTS) e [Git](https://git-scm.com/).
@@ -193,7 +151,6 @@ npm install
 # 3. Iniciar o servidor de desenvolvimento
 npm run dev
 ```
-
 O Vite mostra no terminal o endereço local (normalmente `http://localhost:5173`).
 
 **Outros comandos:**
@@ -221,12 +178,12 @@ npm run preview   # Testa a versão final localmente
 
 | Módulo | Responsável | Entrega |
 |---|---|---|
-| Frontend e mapa | Luiz Eduardo Fernandes Cruz | Estrutura HTML/CSS/JS, mapa do campus, marcação de pontos de interesse e destaque de rampas e acessos |
-| Visualização 3D | Márcio Lucas Rosa Gonçalves | Geração do modelo com IA e integração com Three.js |
-| Dados | Vinícius Silva dos Santos | Arquivos JSON de blocos, pontos de interesse, rampas, acessos e rotas |
+| Frontend e mapa | Luiz Eduardo Fernandes Cruz | Estrutura HTML/CSS/JS, renderização 2D, marcadores interativos e destaques de rotas |
+| Visualização do Mapa | Márcio Lucas Rosa Gonçalves | Geração do Mapa 2D via IA, gestão do repositório no GitHub, automação de deploy e tarefas |
+| Dados | Vinícius Silva dos Santos | Modelagem e preenchimento dos ficheiros JSON (blocos, rampas, acessos) |
 | Repositório, publicação e tarefas | Márcio Lucas Rosa Gonçalves | Repositório GitHub, publicação no GitHub Pages e quadro Trello/ClickUp |
-| Testes de usabilidade | Luan Regis Monteiro | Testes do mapa com estudantes e registro de ajustes |
-| Interface visual | Kelvin Keiti Souza Fukagawa | Validação do layout e da identidade visual conforme o protótipo |
+| Testes de usabilidade | Luan Regis Monteiro | Condução e registo de testes de interface com estudantes no campus da FACAPE |
+| Interface visual | Kelvin Keiti Souza Fukagawa | Garantir a fidelidade da interface com o protótipo do Figma e alinhamento do design |
 
 **Quem mexe em quê no código:**
 
@@ -258,33 +215,39 @@ npm run preview   # Testa a versão final localmente
 
 ### ✅ MVP (este semestre)
 
-- [ ] Estrutura do projeto com Vite
-- [ ] Mapa do campus dividido em blocos
-- [ ] Pontos de interesse, rampas, lombadas e acessos
-- [ ] Filtros por categoria
-- [ ] Modelo 3D com Three.js
-- [ ] Layout responsivo para celular
-- [ ] Testes de usabilidade com estudantes
-- [ ] Publicação no GitHub Pages
+[ ] Configuração do ambiente Vite e repositório.
+
+[ ] Implementação do mapa 2D responsivo do campus da FACAPE.
+
+[ ] Renderização dos marcadores de rampas, acessos, lombadas e blocos via JSON.
+
+[ ] Filtros interativos de visibilidade das categorias.
+
+[ ] Testes de usabilidade no campus com utilizadores reais.
+
+[ ] Publicação e homologação no GitHub Pages.
 
 ###  Fase 2 (futuro)
 
-- [ ] Backend e API (por exemplo, Node.js)
-- [ ] Banco de dados no lugar dos arquivos JSON
-- [ ] Painel para cadastrar e atualizar pontos e rotas dinamicamente
-- [ ] Cálculo automático de rotas acessíveis
-- [ ] Suporte a outras instituições
-- [ ] Refinamento do modelo 3D
+[ ] Desenvolvimento de API Backend em Node.js.
+
+[ ] Migração dos JSONs para uma base de dados relacional.
+
+[ ] Painel Administrativo B2B para atualização dinâmica de pontos e rotas pelas instituições.
+
+[ ] Algoritmo dinâmico de Pathfinding (cálculo da menor rota totalmente acessível).
+
+[ ] Suporte a múltiplos campi e novos clientes B2B no Vale do São Francisco.
 
 ## 🧑‍💻 Equipe
 
 | Nome | Função |
 |---|---|
-| Márcio Lucas Rosa Gonçalves | Visualização 3D · Repositório, publicação e tarefas |
-| Luiz Eduardo Fernandes Cruz | Frontend e mapa |
-| Vinícius Silva dos Santos | Dados |
-| Luan Regis Monteiro | Testes de usabilidade |
-| Kelvin Keiti Souza Fukagawa | Interface visual |
+| Márcio Lucas Rosa Gonçalves ( Desenvolvedor / IA & Arquitetura )
+| Luiz Eduardo Fernandes Cruz ( Líder / Frontend )
+| Vinícius Silva dos Santos ( Estrutura de Dados )
+| Luan Regis Monteiro ( Operações / Testes )
+| Kelvin Keiti Souza Fukagawa ( Relações / UI & Apresentação )
 
 ---
 
