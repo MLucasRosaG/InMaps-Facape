@@ -235,11 +235,11 @@ npm run preview   # Testa a versão final localmente
 
 | Nome | Função |
 |---|---|
-| Márcio Lucas Rosa Gonçalves ( Desenvolvedor / IA & Arquitetura )
-| Luiz Eduardo Fernandes Cruz ( Líder / Frontend )
-| Vinícius Silva dos Santos ( Estrutura de Dados )
-| Luan Regis Monteiro ( Operações / Testes )
-| Kelvin Keiti Souza Fukagawa ( Relações / UI & Apresentação )
+| Márcio Lucas Rosa Gonçalves | ( Desenvolvedor / IA & Arquitetura )
+| Luiz Eduardo Fernandes Cruz | ( Líder / Frontend )
+| Vinícius Silva dos Santos | ( Estrutura de Dados )
+| Luan Regis Monteiro | ( Operações / Testes )
+| Kelvin Keiti Souza Fukagawa | ( Relações / UI & Apresentação )
 
 ---
 
