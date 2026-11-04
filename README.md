@@ -118,6 +118,7 @@ mapa-acessibilidade-facape/
 └── docs/                      # Documentação técnica e académica
 ├── relatorio-stack.pdf    # Relatório formal da disciplina
 └── prototipo/             # Exportações do protótipo do Figma
+```
 
 ---
 
