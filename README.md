@@ -1,4 +1,4 @@
-# 📍 Mapa de Acessibilidade FACAPE — InMap
+#  Mapa de Acessibilidade FACAPE — InMap
 
 > Mapa web interativo e responsivo do campus da Faculdade de Petrolina (FACAPE) focado em acessibilidade e navegação inclusiva: visualização por blocos, pontos de interesse, rampas, lombadas, pisos táteis e acessos adaptados em 2D.
 
@@ -27,7 +27,7 @@
 
 ---
 
-## 🎯 Sobre o projeto
+##  Sobre o projeto
 
 O campus da FACAPE possui diversos blocos e instalações espalhadas. Para pessoas com mobilidade reduzida, deficiência física, idosos ou visitantes iniciantes, identificar onde ficam as rampas, quais caminhos possuem lombadas/piso irregular e qual é a rota acessível até cada bloco é um desafio diário.
 
@@ -37,7 +37,7 @@ O **InMap** resolve essa dor com um **mapa web 2D vetorizado, ultra leve, modern
 
 ---
 
-## 🏁 Objetivos
+##  Objetivos
 
 **Objetivo geral:** Facilitar a micro-navegação e garantir acessibilidade espacial inclusiva dentro do campus da FACAPE.
 
@@ -50,7 +50,7 @@ O **InMap** resolve essa dor com um **mapa web 2D vetorizado, ultra leve, modern
 
 ---
 
-## ⚡ Funcionalidades do MVP
+##  Funcionalidades do MVP
 
 | Funcionalidade | Descrição | Status |
 |---|---|---|
@@ -78,7 +78,7 @@ Servidores/API backend, bases de dados relacionais, painel administrativo dinâm
 | **Hospedagem** | **GitHub Pages** | Alojamento estático público, gratuito e com integração contínua (CI/CD) |
 | **Gestão do Projeto** | **Trello / ClickUp** | Acompanhamento de sprints e quadro Kanban de tarefas |
 
-### 💡 Por que esta stack?
+###  Por que esta stack?
 - **Desempenho e Leveza (Mobile-First):** O mapa 2D é processado instantaneamente sem o consumo elevado de memória/GPU exigido por bibliotecas 3D (Web-GL/Three.js), garantindo uso fluído em qualquer telemóvel.
 - **Foco no Core Feature:** Resolve a dor real do utilizador (localizar rampas e caminhos acessíveis) sem perder tempo com configurações de backend nesta fase de validação.
 - **Zero Custos:** Arquivos estáticos alojados gratuitamente no GitHub Pages sem manutenção de infraestrutura.
@@ -122,7 +122,7 @@ mapa-acessibilidade-facape/
 
 ---
 
-## 📋 Modelo de dados (JSON)
+##  Modelo de dados (JSON)
 
 Os ficheiros JSON funcionam como a fonte única de verdade (*Single Source of Truth*). A sua estrutura modular permite que os membros editem ou adicionem dados sem gerar conflitos de código.
 
