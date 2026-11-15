@@ -1,0 +1,252 @@
+/* Estilos específicos do mapa 2D (InMaps - FACAPE).
+   Cobre apenas layout e comportamento do mapa; identidade visual
+   e estilo geral da interface ficam no CSS global. */
+
+#app:has(#mapa-container) {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: none;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 320px;
+
+  margin: 0;
+  padding: 0;
+  border: none;
+
+  overflow: hidden;
+}
+
+#app:has(#mapa-container) main {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------------
+   Container: ocupa todo o espaço restante abaixo do título.
+   O #app é uma coluna flex; o container cresce para preencher a tela
+   sem criar rolagem vertical.
+   ------------------------------------------------------------------ */
+#mapa-container {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  min-height: 320px;
+  overflow: hidden;
+}
+
+/* A viewport cobre todo o container, então sempre tem largura e altura. */
+#mapa-viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  touch-action: none; /* o navegador não rouba o gesto para rolar/ampliar a página */
+  overscroll-behavior: none;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+}
+
+#mapa-viewport.arrastando {
+  cursor: grabbing;
+}
+
+#mapa-imagem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+  max-height: none;
+  transform-origin: 0 0;
+  will-change: transform;
+  visibility: hidden; /* revelada pelo motor depois de centralizar */
+  -webkit-user-drag: none;
+}
+
+#mapa-viewport.mapa-pronto #mapa-imagem {
+  visibility: visible;
+}
+
+/* ------------------------------------------------------------------
+   Controles de zoom e redefinição.
+
+   Os ícones são desenhados por CSS (máscara SVG pintada com
+   currentColor). Os botões devem ter nome acessível definido no HTML
+   (aria-label ou texto com a classe .mapa-sr-only).
+
+   Integração com o tema: o CSS global pode definir, em :root ou no
+   tema, qualquer uma das variáveis abaixo. Sem elas, valem os padrões.
+     --mapa-ctrl-fundo, --mapa-ctrl-fundo-hover, --mapa-ctrl-borda,
+     --mapa-ctrl-icone, --mapa-ctrl-destaque,
+     --mapa-ctrl-sombra, --mapa-ctrl-sombra-hover,
+     --mapa-ctrl-tamanho, --mapa-ctrl-raio
+   ------------------------------------------------------------------ */
+#mapa-controles {
+  /* Valores efetivos: variável pública do tema, ou o padrão do mapa */
+  --_tamanho: var(--mapa-ctrl-tamanho, 48px);
+  --_raio: var(--mapa-ctrl-raio, 14px);
+  --_fundo: var(--mapa-ctrl-fundo, rgba(255, 255, 255, 0.88));
+  --_fundo-hover: var(--mapa-ctrl-fundo-hover, rgba(255, 255, 255, 0.98));
+  --_borda: var(--mapa-ctrl-borda, rgba(15, 23, 42, 0.08));
+  --_icone: var(--mapa-ctrl-icone, #1f2937);
+  --_destaque: var(--mapa-ctrl-destaque, #0f766e);
+  --_sombra: var(
+    --mapa-ctrl-sombra,
+    0 1px 2px rgba(15, 23, 42, 0.12),
+    0 6px 16px rgba(15, 23, 42, 0.14)
+  );
+  --_sombra-hover: var(
+    --mapa-ctrl-sombra-hover,
+    0 2px 4px rgba(15, 23, 42, 0.14),
+    0 10px 22px rgba(15, 23, 42, 0.18)
+  );
+
+  /* Ícones (traço 2px, grade 24px) */
+  --icone-mais: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E");
+  --icone-menos: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3C/svg%3E");
+  --icone-enquadrar: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 9V6a2 2 0 0 1 2-2h3M15 4h3a2 2 0 0 1 2 2v3M20 15v3a2 2 0 0 1-2 2h-3M9 20H6a2 2 0 0 1-2-2v-3'/%3E%3C/svg%3E");
+
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  right: max(12px, env(safe-area-inset-right));
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#mapa-controles button {
+  /* Zera o visual padrão do navegador */
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+
+  display: grid;
+  place-items: center;
+  width: var(--_tamanho);
+  height: var(--_tamanho);
+  min-width: 44px;
+  min-height: 44px;
+
+  color: var(--_icone);
+  background: var(--_fundo);
+  border: 1px solid var(--_borda);
+  border-radius: var(--_raio);
+  box-shadow: var(--_sombra);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease,
+    color 0.15s ease,
+    transform 0.1s ease;
+
+    font-size: 0;
+    line-height: 0;
+}
+
+/* Ícone desenhado por máscara, na cor do texto do botão */
+#mapa-controles button::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-color: currentColor;
+  -webkit-mask: var(--icone-ativo) center / 24px 24px no-repeat;
+  mask: var(--icone-ativo) center / 24px 24px no-repeat;
+  transform: translateY(1px);
+}
+
+/* Ícones decorativos já marcados no HTML (aria-hidden) não duplicam o do CSS */
+#mapa-controles button > svg[aria-hidden='true'] {
+  display: none;
+}
+
+/* Texto visível apenas para leitores de tela (alternativa ao aria-label) */
+#mapa-controles .mapa-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+#zoom-in {
+  --icone-ativo: var(--icone-mais);
+}
+
+#zoom-out {
+  --icone-ativo: var(--icone-menos);
+}
+
+#zoom-reset {
+  --icone-ativo: var(--icone-enquadrar);
+  margin-top: 4px; /* separa visualmente a ação de redefinir do par de zoom */
+}
+
+/* Hover apenas em dispositivos com mouse (evita "hover preso" no toque) */
+@media (hover: hover) {
+  #mapa-controles button:not(:disabled):hover {
+    background: var(--_fundo-hover);
+    box-shadow: var(--_sombra-hover);
+    color: var(--_destaque);
+    transform: translateY(-1px);
+  }
+}
+
+#mapa-controles button:not(:disabled):active {
+  transform: scale(0.94);
+  box-shadow: var(--_sombra);
+}
+
+#mapa-controles button:focus-visible {
+  outline: 3px solid var(--_destaque);
+  outline-offset: 2px;
+}
+
+/* Limite de zoom atingido (o motor define disabled) */
+#mapa-controles button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Alto contraste do sistema: garante bordas e cores legíveis */
+@media (forced-colors: active) {
+  #mapa-controles button {
+    border-color: ButtonText;
+    background: ButtonFace;
+    color: ButtonText;
+  }
+  #mapa-controles button:disabled {
+    color: GrayText;
+    border-color: GrayText;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #mapa-controles button {
+    transition: none;
+  }
+}
