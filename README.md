@@ -101,8 +101,6 @@ mapa-acessibilidade-facape/
 │   │   ├── blocos.json        # Mapeamento dos blocos do campus
 │   │   ├── pontos.json        # Pontos de interesse gerais
 │   │   ├── rampas.json        # Localização de rampas de acesso
-│   │   ├── lombadas.json      # Lombadas e obstáculos do solo
-│   │   └── acessos.json       # Portões e entradas adaptadas
 │   ├── icons/                 # Marcadores e ícones da interface (SVG/PNG)
 │   └── images/                # Imagens e mapa vetorizado de base 2D
 │
@@ -147,8 +145,8 @@ json
 
 ```bash
 # 1. Clonar o repositório
-git clone https://github.com/<usuario>/mapa-acessibilidade-facape.git
-cd mapa-acessibilidade-facape
+git clone https://github.com/MLucasRosaG/InMaps-Facape.git
+cd InMaps-Facape
 
 # 2. Instalar as dependências
 npm install
@@ -217,11 +215,11 @@ npm run preview   # Testa a versão final localmente
 
 ### ✅ MVP (este semestre)
 
-[ ] Configuração do ambiente Vite e repositório.
+[ X ] Configuração do ambiente Vite e repositório.
 
-[ ] Implementação do mapa 2D responsivo do campus da FACAPE.
+[ X ] Implementação do mapa 2D responsivo do campus da FACAPE.
 
-[ ] Renderização dos marcadores de rampas, acessos, lombadas e blocos via JSON.
+[ X ] Renderização dos marcadores de rampas, acessos, lombadas e blocos via JSON.
 
 [ ] Filtros interativos de visibilidade das categorias.
 
@@ -247,11 +245,11 @@ npm run preview   # Testa a versão final localmente
 
 | Nome | Função |
 |---|---|
-| Márcio Lucas Rosa Gonçalves | ( Desenvolvedor / IA & Arquitetura )
+| Márcio Lucas Rosa Gonçalves | ( Desenvolvedor / IA & Arquitetura / Estrutura de Dados )
 | Luiz Eduardo Fernandes Cruz | ( Líder / Frontend )
-| Vinícius Silva dos Santos | ( Estrutura de Dados )
+| Vinícius Silva dos Santos | ( Relações & Apresentação )
 | Luan Regis Monteiro | ( Operações / Testes )
-| Kelvin Keiti Souza Fukagawa | ( Relações / UI & Apresentação )
+| Kelvin Keiti Souza Fukagawa | ( UI & Apresentação )
 
 ---
 
