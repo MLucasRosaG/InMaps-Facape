@@ -1,114 +1,159 @@
-import { abrirInformacoes } from '../map/markerRenderer.js'
+/**
+ * searchEngine.js — InMaps FACAPE
+ * Busca unificada por:
+ * - Blocos (ex: Bloco de Direito, Bloco Computação, Biblioteca...)
+ * - Pontos de Interesse (ex: Banheiro Acessível, CAD, NTI, Hall de Entrada, Santander...)
+ * - Rampas de acessibilidade
+ * - Nós do mapa
+ */
 
-const CATEGORIAS = {
-  blocos: 'Bloco',
-  pontos: 'Ponto de interesse',
-  rampas: 'Rampa',
-  acessos: 'Acesso',
-  lombadas: 'Lombada',
-}
-
-export function inicializarBusca(dados, mapa) {
+/**
+ * @param {Object} dados — { blocos, pontos, rampas, nos, nosTateis, ... }
+ * @param {Object} mapa  — retorno de inicializarMapa()
+ * @param {Object} rotaCallbacks — { onSelecionarOrigem(item), onSelecionarDestino(item) }
+ * @param {Function} onFocarItem — callback(item) chamado ao clicar num resultado
+ */
+export function inicializarBusca(dados, mapa, rotaCallbacks = {}, onFocarItem = null) {
   const campoBusca = document.querySelector('#campo-busca')
   const resultados = document.querySelector('#resultados-busca')
 
-  if (!campoBusca || !resultados || !mapa) {
-    console.error('InMaps: elementos da busca ou motor do mapa não encontrados.')
+  if (!campoBusca || !resultados) {
+    console.error('InMaps: elementos da busca não encontrados.')
     return
+  }
+
+  // Monta lista de pesquisa com prioridades
+  const fontes = [
+    ...(dados.blocos ?? []).map((b) => ({
+      ...b,
+      _tipo: 'Bloco',
+      _categoria: 'bloco',
+      _icone: '🏢',
+      _prioridade: 1,
+    })),
+    ...(dados.pontos ?? []).map((p) => ({
+      ...p,
+      _tipo: p.tipo ? `Ponto (${p.tipo})` : 'Ponto de Interesse',
+      _categoria: 'ponto',
+      _icone: (p.nome || '').toLowerCase().includes('acessivel') || (p.nome || '').toLowerCase().includes('acessível')
+        ? '♿'
+        : p.tipo === 'banheiro'
+        ? '🚻'
+        : p.tipo === 'laboratorio'
+        ? '💻'
+        : p.tipo === 'auditorio'
+        ? '📢'
+        : p.tipo === 'entrada'
+        ? '🚪'
+        : '📍',
+      _prioridade: 2,
+    })),
+    ...(dados.rampas ?? []).map((r) => ({
+      ...r,
+      _tipo: 'Rampa Acessível',
+      _categoria: 'rampa',
+      _icone: '♿',
+      _prioridade: 3,
+    })),
+  ]
+
+  function normalizar(texto) {
+    return (texto || '')
+      .trim()
+      .toLocaleLowerCase('pt-BR')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
   }
 
   function pesquisar(termo) {
     resultados.replaceChildren()
 
-    if (!termo.trim()) {
+    const consulta = normalizar(termo)
+    if (!consulta) {
       resultados.hidden = true
       return
     }
 
-    const consulta = termo.trim().toLocaleLowerCase('pt-BR')
-    const encontrados = []
-
-    Object.entries(CATEGORIAS).forEach(([categoria, descricao]) => {
-      const itens = dados?.[categoria]
-
-      if (!Array.isArray(itens)) return
-
-      itens.forEach((item) => {
-        const texto = [
-          item.nome,
-          item.descricao,
-          item.tipo,
-          descricao,
-        ]
-          .filter(Boolean)
-          .join(' ')
-          .toLocaleLowerCase('pt-BR')
-
-        if (texto.includes(consulta)) {
-          encontrados.push({
-            item,
-            categoria,
-            descricao,
-          })
-        }
+    const encontrados = fontes
+      .filter((item) => {
+        const textoBusca = normalizar(
+          [item.nome, item.descricao, item.tipo, item.id, item.observacao, item._tipo].join(' ')
+        )
+        return textoBusca.includes(consulta)
       })
-    })
+      .sort((a, b) => a._prioridade - b._prioridade)
 
     if (encontrados.length === 0) {
-      const mensagem = document.createElement('p')
-      mensagem.textContent = 'Nenhum local encontrado.'
-      mensagem.className = 'resultado-vazio'
-      resultados.appendChild(mensagem)
+      const p = document.createElement('p')
+      p.className = 'resultado-vazio'
+      p.textContent = 'Nenhum local ou bloco encontrado.'
+      resultados.appendChild(p)
       resultados.hidden = false
       return
     }
 
-    encontrados.forEach(({ item, categoria, descricao }) => {
-      const botao = document.createElement('button')
-      botao.type = 'button'
-      botao.className = 'resultado-busca'
+    for (const item of encontrados.slice(0, 18)) {
+      const btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'resultado-busca'
+
+      const icone = document.createElement('span')
+      icone.className = 'resultado-icone'
+      icone.textContent = item._icone || '📍'
+
+      const info = document.createElement('div')
+      info.className = 'resultado-info'
 
       const nome = document.createElement('strong')
-      nome.textContent = item.nome || descricao
+      nome.textContent = item.nome || item.id
 
       const tipo = document.createElement('span')
-      tipo.textContent = descricao
+      tipo.className = 'resultado-tipo'
+      tipo.textContent = item._tipo
 
-      botao.append(nome, tipo)
+      info.append(nome, tipo)
+      btn.append(icone, info)
 
-      botao.addEventListener('click', () => {
-        if (!item.posicao) return
+      btn.addEventListener('click', () => {
+        if (item.posicao && mapa?.focarEm) {
+          mapa.focarEm(item.posicao.x, item.posicao.y, 2.5)
+        }
 
-        mapa.focarEm(item.posicao.x, item.posicao.y)
-        abrirInformacoes(item, categoria)
+        if (typeof onFocarItem === 'function') {
+          onFocarItem(item)
+        }
 
+        campoBusca.value = item.nome || item.id
         resultados.hidden = true
-        campoBusca.value = item.nome || ''
+        campoBusca.blur()
       })
 
-      resultados.appendChild(botao)
-    })
+      resultados.appendChild(btn)
+    }
 
     resultados.hidden = false
   }
 
-  campoBusca.addEventListener('input', () => {
-    pesquisar(campoBusca.value)
-  })
+  campoBusca.addEventListener('input', () => pesquisar(campoBusca.value))
 
-  campoBusca.addEventListener('keydown', (evento) => {
-    if (evento.key === 'Escape') {
+  campoBusca.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Escape') {
       resultados.hidden = true
       campoBusca.blur()
     }
   })
 
-  document.addEventListener('click', (evento) => {
-    if (
-      !campoBusca.contains(evento.target) &&
-      !resultados.contains(evento.target)
-    ) {
+  document.addEventListener('click', (ev) => {
+    if (!campoBusca.contains(ev.target) && !resultados.contains(ev.target)) {
       resultados.hidden = true
     }
   })
+
+  return {
+    limpar() {
+      campoBusca.value = ''
+      resultados.hidden = true
+      resultados.replaceChildren()
+    },
+  }
 }

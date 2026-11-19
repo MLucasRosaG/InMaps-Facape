@@ -200,7 +200,7 @@
   {
     "id": "ponto-20",
     "nome": "RECOM",
-    "tipo": "administrativo",
+    "tipo": "laboratorio",
     "descricao": "Recondicionamento de computadores.",
     "blocoId": "",
     "posicao": {
@@ -222,7 +222,7 @@
   {
     "id": "ponto-22",
     "nome": "Hospital Simulado",
-    "tipo": "laboratorio",
+    "tipo": "Servico",
     "descricao": "Ambiente que simula um hospital, usado em aulas práticas dos cursos da saúde.",
     "blocoId": "",
     "posicao": {

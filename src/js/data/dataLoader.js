@@ -1,12 +1,19 @@
+/**
+ * dataLoader.js — InMaps FACAPE
+ * Carrega os 6 arquivos de dados do grafo de acessibilidade.
+ */
 
-const ARQUIVOS_DADOS = {
-  blocos: `${import.meta.env.BASE_URL}data/blocos.json`,
-  pontos: `${import.meta.env.BASE_URL}data/pontos.json`,
-  rampas: `${import.meta.env.BASE_URL}data/rampas.json`,
-  acessos: `${import.meta.env.BASE_URL}data/acessos.json`,
-  lombadas: `${import.meta.env.BASE_URL}data/lombadas.json`,
-  nos: `${import.meta.env.BASE_URL}data/nos.json`,
-  arestas: `${import.meta.env.BASE_URL}data/arestas.json`,
+const BASE = import.meta.env.BASE_URL
+
+const ARQUIVOS = {
+  nos:           `${BASE}data/nos.json`,
+  arestas:       `${BASE}data/arestas.json`,
+  nosTateis:     `${BASE}data/nosTateis.json`,
+  arestasTateis: `${BASE}data/arestasTateis.json`,
+  rampas:        `${BASE}data/rampas.json`,
+  ruas:          `${BASE}data/ruas.json`,
+  blocos:        `${BASE}data/blocos.json`,
+  pontos:        `${BASE}data/pontos.json`,
 }
 
 async function carregarArquivo(nome, caminho) {
@@ -14,38 +21,50 @@ async function carregarArquivo(nome, caminho) {
     const resposta = await fetch(caminho)
 
     if (!resposta.ok) {
-      throw new Error(`HTTP error ${resposta.status}`)
+      throw new Error(`HTTP ${resposta.status} ao buscar ${caminho}`)
     }
 
-    const conteudo = await resposta.text()
+    const texto = await resposta.text()
 
-    if (!conteudo.trim()) {
+    if (!texto.trim()) {
+      console.warn(`InMaps: arquivo vazio — ${nome}`)
       return []
     }
 
-    const dados = JSON.parse(conteudo)
+    const dados = JSON.parse(texto)
 
     if (!Array.isArray(dados)) {
-      throw new Error('O conteudo precisa ser um array JSON.')
+      throw new Error(`${nome}: conteúdo não é um array JSON`)
     }
 
     return dados
   } catch (erro) {
-    console.error(`Falha ao carregar ${nome}:`, erro)
-    throw erro
+    console.error(`InMaps: falha ao carregar "${nome}":`, erro)
+    return [] // retorna vazio para não bloquear a inicialização
   }
 }
 
+/**
+ * Carrega todos os arquivos de dados em paralelo.
+ * @returns {Promise<{nos, arestas, nosTateis, arestasTateis, rampas, ruas}>}
+ */
 export async function carregarDados() {
-  const nomes = Object.keys(ARQUIVOS_DADOS)
+  const nomes = Object.keys(ARQUIVOS)
 
   const resultados = await Promise.all(
-    nomes.map((nome) =>
-      carregarArquivo(nome, ARQUIVOS_DADOS[nome])
-    )
+    nomes.map((nome) => carregarArquivo(nome, ARQUIVOS[nome]))
   )
 
-  return Object.fromEntries(
-    nomes.map((nome, indice) => [nome, resultados[indice]])
+  const dados = Object.fromEntries(
+    nomes.map((nome, i) => [nome, resultados[i]])
   )
+
+  console.info(
+    `InMaps: dados carregados — ` +
+    `${dados.nos.length} nós, ${dados.arestas.length} arestas, ` +
+    `${dados.nosTateis.length} nós táteis, ${dados.arestasTateis.length} arestas táteis, ` +
+    `${dados.rampas.length} rampas, ${dados.ruas.length} ruas`
+  )
+
+  return dados
 }
