@@ -1,6 +1,4 @@
-/* Estilos específicos do mapa 2D (InMaps - FACAPE).
-   Cobre apenas layout e comportamento do mapa; identidade visual
-   e estilo geral da interface ficam no CSS global. */
+/* Estilos específicos do mapa 2D (InMaps - FACAPE). */
 
 #app:has(#mapa-container) {
   display: flex;
@@ -31,11 +29,8 @@
   overflow: hidden;
 }
 
-/* ------------------------------------------------------------------
-   Container: ocupa todo o espaço restante abaixo do título.
-   O #app é uma coluna flex; o container cresce para preencher a tela
-   sem criar rolagem vertical.
-   ------------------------------------------------------------------ */
+/* MAPA */
+
 #mapa-container {
   position: relative;
   flex: 1 1 auto;
@@ -45,12 +40,11 @@
   overflow: hidden;
 }
 
-/* A viewport cobre todo o container, então sempre tem largura e altura. */
 #mapa-viewport {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  touch-action: none; /* o navegador não rouba o gesto para rolar/ampliar a página */
+  touch-action: none;
   overscroll-behavior: none;
   user-select: none;
   -webkit-user-select: none;
@@ -61,38 +55,34 @@
   cursor: grabbing;
 }
 
+#mapa-camada {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  transform-origin: 0 0;
+  will-change: transform;
+  visibility: hidden;
+}
+
+#mapa-viewport.mapa-pronto #mapa-camada {
+  visibility: visible;
+}
+
 #mapa-imagem {
   position: absolute;
   top: 0;
   left: 0;
+  display: block;
   max-width: none;
   max-height: none;
-  transform-origin: 0 0;
-  will-change: transform;
-  visibility: hidden; /* revelada pelo motor depois de centralizar */
   -webkit-user-drag: none;
 }
 
-#mapa-viewport.mapa-pronto #mapa-imagem {
-  visibility: visible;
-}
+/* CONTROLES DE ZOOM */
 
-/* ------------------------------------------------------------------
-   Controles de zoom e redefinição.
-
-   Os ícones são desenhados por CSS (máscara SVG pintada com
-   currentColor). Os botões devem ter nome acessível definido no HTML
-   (aria-label ou texto com a classe .mapa-sr-only).
-
-   Integração com o tema: o CSS global pode definir, em :root ou no
-   tema, qualquer uma das variáveis abaixo. Sem elas, valem os padrões.
-     --mapa-ctrl-fundo, --mapa-ctrl-fundo-hover, --mapa-ctrl-borda,
-     --mapa-ctrl-icone, --mapa-ctrl-destaque,
-     --mapa-ctrl-sombra, --mapa-ctrl-sombra-hover,
-     --mapa-ctrl-tamanho, --mapa-ctrl-raio
-   ------------------------------------------------------------------ */
 #mapa-controles {
-  /* Valores efetivos: variável pública do tema, ou o padrão do mapa */
   --_tamanho: var(--mapa-ctrl-tamanho, 48px);
   --_raio: var(--mapa-ctrl-raio, 14px);
   --_fundo: var(--mapa-ctrl-fundo, rgba(255, 255, 255, 0.88));
@@ -100,69 +90,74 @@
   --_borda: var(--mapa-ctrl-borda, rgba(15, 23, 42, 0.08));
   --_icone: var(--mapa-ctrl-icone, #1f2937);
   --_destaque: var(--mapa-ctrl-destaque, #0f766e);
+
   --_sombra: var(
     --mapa-ctrl-sombra,
     0 1px 2px rgba(15, 23, 42, 0.12),
     0 6px 16px rgba(15, 23, 42, 0.14)
   );
+
   --_sombra-hover: var(
     --mapa-ctrl-sombra-hover,
     0 2px 4px rgba(15, 23, 42, 0.14),
     0 10px 22px rgba(15, 23, 42, 0.18)
   );
 
-  /* Ícones (traço 2px, grade 24px) */
   --icone-mais: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E");
+
   --icone-menos: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3C/svg%3E");
+
   --icone-enquadrar: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 9V6a2 2 0 0 1 2-2h3M15 4h3a2 2 0 0 1 2 2v3M20 15v3a2 2 0 0 1-2 2h-3M9 20H6a2 2 0 0 1-2-2v-3'/%3E%3C/svg%3E");
 
   position: absolute;
   top: 12px;
-  right: 12px;
   right: max(12px, env(safe-area-inset-right));
   z-index: 10;
+
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
 #mapa-controles button {
-  /* Zera o visual padrão do navegador */
   appearance: none;
   -webkit-appearance: none;
-  margin: 0;
-  padding: 0;
-  font: inherit;
 
   display: grid;
   place-items: center;
+
   width: var(--_tamanho);
   height: var(--_tamanho);
   min-width: 44px;
   min-height: 44px;
+
+  margin: 0;
+  padding: 0;
+
+  font: inherit;
+  font-size: 0;
+  line-height: 0;
 
   color: var(--_icone);
   background: var(--_fundo);
   border: 1px solid var(--_borda);
   border-radius: var(--_raio);
   box-shadow: var(--_sombra);
+
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 
   cursor: pointer;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+
   transition:
     background-color 0.15s ease,
     box-shadow 0.15s ease,
     color 0.15s ease,
     transform 0.1s ease;
-
-    font-size: 0;
-    line-height: 0;
 }
 
-/* Ícone desenhado por máscara, na cor do texto do botão */
 #mapa-controles button::before {
   content: '';
   display: block;
@@ -174,12 +169,10 @@
   transform: translateY(1px);
 }
 
-/* Ícones decorativos já marcados no HTML (aria-hidden) não duplicam o do CSS */
 #mapa-controles button > svg[aria-hidden='true'] {
   display: none;
 }
 
-/* Texto visível apenas para leitores de tela (alternativa ao aria-label) */
 #mapa-controles .mapa-sr-only {
   position: absolute;
   width: 1px;
@@ -202,10 +195,9 @@
 
 #zoom-reset {
   --icone-ativo: var(--icone-enquadrar);
-  margin-top: 4px; /* separa visualmente a ação de redefinir do par de zoom */
+  margin-top: 4px;
 }
 
-/* Hover apenas em dispositivos com mouse (evita "hover preso" no toque) */
 @media (hover: hover) {
   #mapa-controles button:not(:disabled):hover {
     background: var(--_fundo-hover);
@@ -225,20 +217,19 @@
   outline-offset: 2px;
 }
 
-/* Limite de zoom atingido (o motor define disabled) */
 #mapa-controles button:disabled {
   opacity: 0.45;
   cursor: not-allowed;
   box-shadow: none;
 }
 
-/* Alto contraste do sistema: garante bordas e cores legíveis */
 @media (forced-colors: active) {
   #mapa-controles button {
     border-color: ButtonText;
     background: ButtonFace;
     color: ButtonText;
   }
+
   #mapa-controles button:disabled {
     color: GrayText;
     border-color: GrayText;
@@ -248,5 +239,123 @@
 @media (prefers-reduced-motion: reduce) {
   #mapa-controles button {
     transition: none;
+  }
+}
+
+/* BARRA DE PESQUISA NO CABEÇALHO */
+
+#busca-container {
+  position: relative;
+  z-index: 20;
+  flex: 0 1 380px;
+  width: 100%;
+  min-width: 0;
+}
+
+#campo-busca {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 48px;
+  padding: 0 16px;
+
+  font: inherit;
+  font-size: 14px;
+  color: var(--text);
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.16);
+  outline: none;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+#campo-busca::placeholder {
+  color: var(--text-secondary);
+}
+
+#campo-busca:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.13);
+}
+
+#resultados-busca {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 25;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  max-height: 280px;
+  padding: 6px;
+  overflow-y: auto;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+#resultados-busca[hidden] {
+  display: none;
+}
+
+.resultado-busca {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+
+  width: 100%;
+  padding: 11px 12px;
+
+  color: var(--text);
+  text-align: left;
+  font: inherit;
+
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
+.resultado-busca:hover,
+.resultado-busca:focus-visible {
+  background: var(--bg);
+  outline: none;
+}
+
+.resultado-busca strong {
+  font-size: 14px;
+}
+
+.resultado-busca span,
+.resultado-vazio {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.resultado-vazio {
+  margin: 0;
+  padding: 12px;
+}
+
+@media (max-width: 600px) {
+  #busca-container {
+    flex: none;
+  }
+
+  #campo-busca {
+    min-height: 44px;
   }
 }

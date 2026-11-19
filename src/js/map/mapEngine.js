@@ -19,17 +19,23 @@ function limitarValor(valor, minimo, maximo) {
 export function inicializarMapa() {
   const container = document.querySelector('#mapa-container')
   const viewport = document.querySelector('#mapa-viewport')
+  const camada = document.querySelector('#mapa-camada')
   const imagem = document.querySelector('#mapa-imagem')
   const controles = document.querySelector('#mapa-controles')
   const botaoZoomIn = document.querySelector('#zoom-in')
   const botaoZoomOut = document.querySelector('#zoom-out')
   const botaoReset = document.querySelector('#zoom-reset')
+  
 
   // Elementos obrigatórios
-  if (!viewport || !imagem) {
+  if (!viewport || !imagem || !camada) {
     console.error(
       'InMaps: não foi possível iniciar o mapa. Elemento(s) ausente(s):',
-      [!viewport && '#mapa-viewport', !imagem && '#mapa-imagem']
+      [
+        !viewport && '#mapa-viewport',
+        !imagem && '#mapa-imagem',
+        !camada && '#mapa-camada',
+      ]
         .filter(Boolean)
         .join(', ')
     )
@@ -120,9 +126,9 @@ export function inicializarMapa() {
   }
 
   function aplicar() {
-    limitarPosicao()
-    imagem.style.transform = `translate(${estado.x}px, ${estado.y}px) scale(${escalaAtual()})`
-    atualizarBotoes()
+  limitarPosicao()
+  camada.style.transform = `translate(${estado.x}px, ${estado.y}px) scale(${escalaAtual()})`
+  atualizarBotoes()
   }
 
   // Altera o zoom mantendo fixo o ponto (px, py), em coordenadas da viewport
@@ -150,6 +156,32 @@ export function inicializarMapa() {
     estado.y = 0
     aplicar() // limitarPosicao() centraliza a imagem
   }
+
+  function focarEm(x, y) {
+  const zoomAlvo = 2.5
+
+  estado.z = zoomAlvo
+
+  const escala = escalaAtual()
+
+  estado.x = viewport.clientWidth / 2 - Number(x) * escala
+  estado.y = viewport.clientHeight / 2 - Number(y) * escala
+
+  aplicar()
+  }
+
+  function focarEm(x, y) {
+  const zoomAlvo = 2.5
+
+  estado.z = zoomAlvo
+
+  const escala = escalaAtual()
+
+  estado.x = viewport.clientWidth / 2 - Number(x) * escala
+  estado.y = viewport.clientHeight / 2 - Number(y) * escala
+
+  aplicar()
+}
 
   // ---------- Botões ----------
   if (botaoZoomIn) {
@@ -313,6 +345,8 @@ export function inicializarMapa() {
     // Tamanho natural da imagem; posição e demais estilos vêm do mapa.css
     imagem.style.width = `${larguraBase}px`
     imagem.style.height = `${alturaBase}px`
+    camada.style.width = `${larguraBase}px`
+    camada.style.height = `${alturaBase}px`
 
     if (!iniciarEnquadramento()) {
       // Viewport ainda sem tamanho: a imagem continua oculta e o
@@ -364,8 +398,9 @@ export function inicializarMapa() {
 
   // Interface mínima para uso futuro por outras partes do projeto
   return {
-    zoomIn: () => zoomPeloCentro(PASSO_ZOOM),
-    zoomOut: () => zoomPeloCentro(1 / PASSO_ZOOM),
-    resetar,
-  }
+  zoomIn: () => zoomPeloCentro(PASSO_ZOOM),
+  zoomOut: () => zoomPeloCentro(1 / PASSO_ZOOM),
+  resetar,
+  focarEm,
+}
 }
