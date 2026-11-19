@@ -1,60 +1,76 @@
 import './style.css'
-import heroImg from './assets/hero.png'
-import javascriptLogo from './assets/javascript.svg'
-import viteLogo from './assets/vite.svg'
-import { setupCounter } from './counter.js'
+import { inicializarMapa } from './js/map/mapEngine.js'
+import { carregarDados } from './js/data/dataLoader.js'
+import { renderizarMarcadores } from './js/map/markerRenderer.js'
+import { inicializarBusca } from './js/search/searchEngine.js'
 
-document.querySelector('#app').innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${javascriptLogo}" class="framework" alt="JavaScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.js</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+async function iniciarAplicacao() {
+  const app = document.querySelector('#app')
 
-<div class="ticks"></div>
+  if (!app) {
+    console.error('Elemento #app não encontrado no index.html.')
+    return
+  }
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-          <img class="button-icon" src="${javascriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
+  app.innerHTML = `
+    <main>
+      <header class="cabecalho cabecalho-layout">
+        <div class="cabecalho-texto">
+          <h1>InMaps – FACAPE</h1>
+          <p>Mapa de acessibilidade do campus</p>
+        </div>
 
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
+        <div id="busca-container">
+          <input
+            id="campo-busca"
+            type="search"
+            placeholder="Buscar blocos, rampas, locais..."
+            aria-label="Buscar locais no mapa"
+            autocomplete="off"
+          />
+          <div id="resultados-busca" hidden></div>
+        </div>
+      </header>
 
-setupCounter(document.querySelector('#counter'))
+      <section id="mapa-container">
+
+        <div id="mapa-controles">
+          <button id="zoom-in" type="button" aria-label="Aumentar zoom">+</button>
+          <button id="zoom-out" type="button" aria-label="Diminuir zoom">-</button>
+          <button id="zoom-reset" type="button" aria-label="Redefinir mapa">Redefinir</button>
+        </div>
+
+        <div id="mapa-viewport">
+          <div id="mapa-camada">
+            <img
+              id="mapa-imagem"
+              src="${import.meta.env.BASE_URL}images/Mapa_Facape.jpg"
+              alt="Mapa do campus da FACAPE"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+  `
+
+  let dados = null
+
+  try {
+    dados = await carregarDados()
+    console.log('Dados do InMaps carregados:', dados)
+  } catch (erro) {
+    console.error('Não foi possível carregar os dados do InMaps:', erro)
+  }
+
+  const mapa = inicializarMapa()
+
+  if (dados) {
+    renderizarMarcadores(dados)
+
+    if (mapa) {
+      inicializarBusca(dados, mapa)
+    }
+  }
+}
+
+iniciarAplicacao()
