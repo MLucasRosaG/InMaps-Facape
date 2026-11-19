@@ -1,1 +1,387 @@
-﻿[]
+[
+  {
+    "id": "ponto-02",
+    "nome": "Auto Atendimento Santander",
+    "tipo": "servico",
+    "descricao": "Caixas eletrônicos do banco Santander para uso de alunos e visitantes.",
+    "blocoId": "",
+    "posicao": {
+      "x": 710,
+      "y": 562
+    }
+  },
+  {
+    "id": "ponto-03",
+    "nome": "PROCON",
+    "tipo": "servico",
+    "descricao": "Posto do PROCON, que atende a comunidade em questões de defesa do consumidor.",
+    "blocoId": "",
+    "posicao": {
+      "x": 839,
+      "y": 455
+    }
+  },
+  {
+    "id": "ponto-04",
+    "nome": "NPJ",
+    "tipo": "servico",
+    "descricao": "Núcleo de Prática Jurídica: atendimento jurídico à comunidade e prática dos alunos de Direito.",
+    "blocoId": "",
+    "posicao": {
+      "x": 790,
+      "y": 456
+    }
+  },
+  {
+    "id": "ponto-05",
+    "nome": "Câmara de Conciliação",
+    "tipo": "servico",
+    "descricao": "Espaço voltado à resolução consensual e amigável de conflitos por meio do diálogo, evitando ou agilizando processos judiciais.",
+    "blocoId": "",
+    "posicao": {
+      "x": 737,
+      "y": 456
+    }
+  },
+  {
+    "id": "ponto-01",
+    "nome": "Hall de Entrada",
+    "tipo": "entrada",
+    "descricao": "Entrada principal da faculdade, com acesso aos corredores e setores.",
+    "blocoId": "",
+    "posicao": {
+      "x": 695,
+      "y": 771
+    }
+  },
+  {
+    "id": "ponto-06",
+    "nome": "Auditório Central",
+    "tipo": "auditorio",
+    "descricao": "Auditório grande, usado em palestras, eventos e apresentações.",
+    "blocoId": "",
+    "posicao": {
+      "x": 953,
+      "y": 547
+    }
+  },
+  {
+    "id": "ponto-07",
+    "nome": "Coordenação de Bolsa e Estágio | Coordenação Pós-Graduação | Coordenação Psicologia | Coordenação Medicina | Coordenação Comex | Sala dos Professores",
+    "tipo": "coordenacao",
+    "descricao": "Área com várias coordenações e a sala dos professores.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1172,
+      "y": 488
+    }
+  },
+  {
+    "id": "ponto-09",
+    "nome": "CAD",
+    "tipo": "administrativo",
+    "descricao": "Setor de atendimento ao aluno para assuntos acadêmicos e documentos. Além de varios serviços administrativos, como financeiro, diploma, tesouraria, etc.",
+    "blocoId": "",
+    "posicao": {
+      "x": 987,
+      "y": 441
+    }
+  },
+  {
+    "id": "ponto-10",
+    "nome": "Lab. 02",
+    "tipo": "laboratorio",
+    "descricao": "Laboratório da faculdade, usado em aulas práticas.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1248,
+      "y": 441
+    }
+  },
+  {
+    "id": "ponto-11",
+    "nome": "Lab. 01",
+    "tipo": "laboratorio",
+    "descricao": "Laboratório da faculdade, com computadores, normalmente usado pelo curso de Computação.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1223,
+      "y": 441
+    }
+  },
+  {
+    "id": "ponto-12",
+    "nome": "NTI",
+    "tipo": "administrativo",
+    "descricao": "Núcleo de Tecnologia da Informação: suporte, redes e sistemas da faculdade.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1094,
+      "y": 440
+    }
+  },
+  {
+    "id": "ponto-13",
+    "nome": "Tech Hub",
+    "tipo": "laboratorio",
+    "descricao": "Espaço de tecnologia e inovação da Santo Digital.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1300,
+      "y": 441
+    }
+  },
+  {
+    "id": "ponto-14",
+    "nome": "NAP",
+    "tipo": "servico",
+    "descricao": "Núcleo de apoio Psicopedagógico.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1257,
+      "y": 582
+    }
+  },
+  {
+    "id": "ponto-15",
+    "nome": "Lab. 04",
+    "tipo": "laboratorio",
+    "descricao": "Laboratório da faculdade, usado em aulas práticas.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1255,
+      "y": 333
+    }
+  },
+  {
+    "id": "ponto-16",
+    "nome": "Almoxarifado",
+    "tipo": "apoio",
+    "descricao": "Local de armazenamento de materiais e equipamentos da faculdade. Acesso restrito.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1375,
+      "y": 334
+    }
+  },
+  {
+    "id": "ponto-17",
+    "nome": "Coordenação de Concursos",
+    "tipo": "coordenacao",
+    "descricao": "Coordenação responsável pela organização dos concursos realizados na faculdade.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1378,
+      "y": 442
+    }
+  },
+  {
+    "id": "ponto-18",
+    "nome": "Sala de Concursos",
+    "tipo": "sala",
+    "descricao": "Sala de apoio às atividades dos concursos.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1026,
+      "y": 583
+    }
+  },
+  {
+    "id": "ponto-19",
+    "nome": "ASCOM / AgroLabs",
+    "tipo": "administrativo",
+    "descricao": "Setor de comunicação da faculdade e espaço de projetos ligados ao agro.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1340,
+      "y": 441
+    }
+  },
+  {
+    "id": "ponto-20",
+    "nome": "RECOM",
+    "tipo": "administrativo",
+    "descricao": "Recondicionamento de computadores.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1358,
+      "y": 178
+    }
+  },
+  {
+    "id": "ponto-21",
+    "nome": "Coordenação Computação",
+    "tipo": "coordenacao",
+    "descricao": "Coordenação do curso de Computação.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1126,
+      "y": 178
+    }
+  },
+  {
+    "id": "ponto-22",
+    "nome": "Hospital Simulado",
+    "tipo": "laboratorio",
+    "descricao": "Ambiente que simula um hospital, usado em aulas práticas dos cursos da saúde.",
+    "blocoId": "",
+    "posicao": {
+      "x": 884,
+      "y": 134
+    }
+  },
+  {
+    "id": "ponto-23",
+    "nome": "Banheiro Acessivel",
+    "tipo": "banheiro",
+    "descricao": "Banheiro adaptado para pessoas com deficiência ou mobilidade reduzida.",
+    "blocoId": "",
+    "posicao": {
+      "x": 986,
+      "y": 275
+    }
+  },
+  {
+    "id": "ponto-24",
+    "nome": "Banheiro Masculino",
+    "tipo": "banheiro",
+    "descricao": "Banheiro masculino.",
+    "blocoId": "",
+    "posicao": {
+      "x": 947,
+      "y": 275
+    }
+  },
+  {
+    "id": "ponto-25",
+    "nome": "Banheiro Feminino",
+    "tipo": "banheiro",
+    "descricao": "Banheiro feminino.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1027,
+      "y": 273
+    }
+  },
+  {
+    "id": "ponto-26",
+    "nome": "Banheiro (Bloco Direito)",
+    "tipo": "banheiro",
+    "descricao": "Banheiro localizado no bloco do curso de Direito.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1646,
+      "y": 92
+    }
+  },
+  {
+    "id": "ponto-27",
+    "nome": "Banheiro (Bloco Contábeis)",
+    "tipo": "banheiro",
+    "descricao": "Banheiro localizado no bloco do curso de Ciências Contábeis.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1646,
+      "y": 131
+    }
+  },
+  {
+    "id": "ponto-28",
+    "nome": "Lab. Contábeis",
+    "tipo": "laboratorio",
+    "descricao": "Laboratório usado em aulas práticas do curso de Ciências Contábeis.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1594,
+      "y": 131
+    }
+  },
+  {
+    "id": "ponto-29",
+    "nome": "Coordenação Direito",
+    "tipo": "coordenacao",
+    "descricao": "Coordenação do curso de Direito.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1400,
+      "y": 91
+    }
+  },
+  {
+    "id": "ponto-30",
+    "nome": "Lab.05",
+    "tipo": "laboratorio",
+    "descricao": "Laboratório da faculdade, usado em aulas práticas.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1175,
+      "y": 178
+    }
+  },
+  {
+    "id": "ponto-31",
+    "nome": "Lab. 06",
+    "tipo": "laboratorio",
+    "descricao": "Laboratório da faculdade, usado em aulas práticas.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1223,
+      "y": 178
+    }
+  },
+  {
+    "id": "ponto-32",
+    "nome": "Lab. 07",
+    "tipo": "laboratorio",
+    "descricao": "Laboratório da faculdade, usado em aulas práticas.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1269,
+      "y": 178
+    }
+  },
+  {
+    "id": "ponto-33",
+    "nome": "Lab. 08",
+    "tipo": "laboratorio",
+    "descricao": "Laboratório da faculdade, usado em aulas práticas.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1314,
+      "y": 178
+    }
+  },
+  {
+    "id": "ponto-34",
+    "nome": "Coord. Economia/GTI",
+    "tipo": "coordenacao",
+    "descricao": "Coordenação dos cursos de Economia e de Gestão da Tecnologia da Informação.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1038,
+      "y": 335
+    }
+  },
+  {
+    "id": "ponto-36",
+    "nome": "Direção Acadêmica | Direção | Júridico - Direção | Financeiro - Direção",
+    "tipo": "administrativo",
+    "descricao": "Setores da direção da faculdade: direção acadêmica, jurídico e financeiro.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1056,
+      "y": 487
+    }
+  },
+  {
+    "id": "ponto-37",
+    "nome": "Setor Pessoal | Licitação",
+    "tipo": "administrativo",
+    "descricao": "Setores administrativos de pessoal e licitação.",
+    "blocoId": "",
+    "posicao": {
+      "x": 1056,
+      "y": 552
+    }
+  }
+]

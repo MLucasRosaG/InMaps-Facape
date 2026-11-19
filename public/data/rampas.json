@@ -1,1 +1,210 @@
-﻿[]
+[
+  {
+    "id": "rampa-01",
+    "nome": "Rampa 01",
+    "blocoId": "",
+    "posicao": {
+      "x": 750,
+      "y": 263
+    },
+    "largura": 31,
+    "altura": 10,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rampa-02",
+    "nome": "Rampa 02",
+    "blocoId": "",
+    "posicao": {
+      "x": 1392,
+      "y": 454
+    },
+    "largura": 10,
+    "altura": 11,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rampa-03",
+    "nome": "Rampa 03",
+    "blocoId": "",
+    "posicao": {
+      "x": 894,
+      "y": 230
+    },
+    "largura": 13,
+    "altura": 21,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rampa-04",
+    "nome": "Rampa 04",
+    "blocoId": "",
+    "posicao": {
+      "x": 1375,
+      "y": 362
+    },
+    "largura": 11,
+    "altura": 15,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rampa-05",
+    "nome": "Rampa 05",
+    "blocoId": "",
+    "posicao": {
+      "x": 1410,
+      "y": 731
+    },
+    "largura": 10,
+    "altura": 18,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rampa-06",
+    "nome": "Rampa 06",
+    "blocoId": "",
+    "posicao": {
+      "x": 1263,
+      "y": 589
+    },
+    "largura": 4,
+    "altura": 8,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rampa-07",
+    "nome": "Rampa 07",
+    "blocoId": "",
+    "posicao": {
+      "x": 1213,
+      "y": 597
+    },
+    "largura": 6,
+    "altura": 4,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rampa-08",
+    "nome": "Rampa 08",
+    "blocoId": "",
+    "posicao": {
+      "x": 1258,
+      "y": 597
+    },
+    "largura": 4,
+    "altura": 4,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rampa-09",
+    "nome": "Rampa 09",
+    "blocoId": "",
+    "posicao": {
+      "x": 1072,
+      "y": 428
+    },
+    "largura": 10,
+    "altura": 33,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rampa-10",
+    "nome": "Rampa 10",
+    "blocoId": "",
+    "posicao": {
+      "x": 708,
+      "y": 569
+    },
+    "largura": 8,
+    "altura": 4,
+    "rotacao": 51,
+    "observacao": ""
+  },
+  {
+    "id": "rampa-11",
+    "nome": "Rampa 11",
+    "blocoId": "",
+    "posicao": {
+      "x": 695,
+      "y": 763
+    },
+    "largura": 12,
+    "altura": 7,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rampa-12",
+    "nome": "Rampa 12",
+    "blocoId": "",
+    "posicao": {
+      "x": 1257,
+      "y": 451
+    },
+    "largura": 12,
+    "altura": 12,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rampa-13",
+    "nome": "Rampa 13",
+    "blocoId": "",
+    "posicao": {
+      "x": 736,
+      "y": 360
+    },
+    "largura": 34,
+    "altura": 11,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rampa-14",
+    "nome": "Rampa 14",
+    "blocoId": "",
+    "posicao": {
+      "x": 727,
+      "y": 449
+    },
+    "largura": 9,
+    "altura": 10,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rampa-15",
+    "nome": "Rampa 15",
+    "blocoId": "",
+    "posicao": {
+      "x": 980,
+      "y": 603
+    },
+    "largura": 9,
+    "altura": 5,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rampa-16",
+    "nome": "Rampa 16",
+    "blocoId": "",
+    "posicao": {
+      "x": 1008,
+      "y": 558
+    },
+    "largura": 13,
+    "altura": 9,
+    "rotacao": 0,
+    "observacao": ""
+  }
+]

@@ -1,0 +1,389 @@
+[
+  {
+    "id": "tno-01",
+    "nome": "",
+    "posicao": {
+      "x": 714,
+      "y": 561
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-02",
+    "nome": "",
+    "posicao": {
+      "x": 715,
+      "y": 360
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-03",
+    "nome": "",
+    "posicao": {
+      "x": 715,
+      "y": 263
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-04",
+    "nome": "",
+    "posicao": {
+      "x": 732,
+      "y": 263
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-05",
+    "nome": "",
+    "posicao": {
+      "x": 758,
+      "y": 360
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-06",
+    "nome": "",
+    "posicao": {
+      "x": 768,
+      "y": 262
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-07",
+    "nome": "",
+    "posicao": {
+      "x": 894,
+      "y": 260
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-08",
+    "nome": "",
+    "posicao": {
+      "x": 907,
+      "y": 261
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-09",
+    "nome": "",
+    "posicao": {
+      "x": 907,
+      "y": 268
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-10",
+    "nome": "",
+    "posicao": {
+      "x": 908,
+      "y": 360
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-11",
+    "nome": "",
+    "posicao": {
+      "x": 908,
+      "y": 340
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-12",
+    "nome": "",
+    "posicao": {
+      "x": 1074,
+      "y": 343
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-13",
+    "nome": "",
+    "posicao": {
+      "x": 1073,
+      "y": 451
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-14",
+    "nome": "",
+    "posicao": {
+      "x": 908,
+      "y": 450
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-15",
+    "nome": "",
+    "posicao": {
+      "x": 870,
+      "y": 450
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-16",
+    "nome": "",
+    "posicao": {
+      "x": 736,
+      "y": 450
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-17",
+    "nome": "",
+    "posicao": {
+      "x": 870,
+      "y": 579
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-18",
+    "nome": "",
+    "posicao": {
+      "x": 847,
+      "y": 562
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-19",
+    "nome": "",
+    "posicao": {
+      "x": 893,
+      "y": 596
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-20",
+    "nome": "",
+    "posicao": {
+      "x": 1088,
+      "y": 596
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-21",
+    "nome": "",
+    "posicao": {
+      "x": 1114,
+      "y": 597
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-22",
+    "nome": "",
+    "posicao": {
+      "x": 1114,
+      "y": 501
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-23",
+    "nome": "",
+    "posicao": {
+      "x": 1116,
+      "y": 451
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-24",
+    "nome": "",
+    "posicao": {
+      "x": 1116,
+      "y": 475
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-25",
+    "nome": "",
+    "posicao": {
+      "x": 1247,
+      "y": 450
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-26",
+    "nome": "",
+    "posicao": {
+      "x": 1267,
+      "y": 451
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-27",
+    "nome": "",
+    "posicao": {
+      "x": 1383,
+      "y": 452
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-28",
+    "nome": "",
+    "posicao": {
+      "x": 1385,
+      "y": 265
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-29",
+    "nome": "",
+    "posicao": {
+      "x": 1376,
+      "y": 341
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-30",
+    "nome": "",
+    "posicao": {
+      "x": 1266,
+      "y": 342
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-31",
+    "nome": "",
+    "posicao": {
+      "x": 1265,
+      "y": 267
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-32",
+    "nome": "",
+    "posicao": {
+      "x": 1113,
+      "y": 266
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-33",
+    "nome": "",
+    "posicao": {
+      "x": 1113,
+      "y": 186
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-34",
+    "nome": "",
+    "posicao": {
+      "x": 1385,
+      "y": 186
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-35",
+    "nome": "",
+    "posicao": {
+      "x": 1386,
+      "y": 107
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-36",
+    "nome": "",
+    "posicao": {
+      "x": 1115,
+      "y": 107
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-37",
+    "nome": "",
+    "posicao": {
+      "x": 1220,
+      "y": 596
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-38",
+    "nome": "",
+    "posicao": {
+      "x": 1254,
+      "y": 597
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-39",
+    "nome": "",
+    "posicao": {
+      "x": 1265,
+      "y": 579
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-40",
+    "nome": "",
+    "posicao": {
+      "x": 1077,
+      "y": 267
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-41",
+    "nome": "",
+    "posicao": {
+      "x": 1080,
+      "y": 40
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-42",
+    "nome": "",
+    "posicao": {
+      "x": 1114,
+      "y": 552
+    },
+    "observacao": ""
+  },
+  {
+    "id": "tno-43",
+    "nome": "",
+    "posicao": {
+      "x": 1086,
+      "y": 552
+    },
+    "observacao": ""
+  }
+]

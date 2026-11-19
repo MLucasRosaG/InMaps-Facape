@@ -1,0 +1,938 @@
+[
+  {
+    "id": "aresta-01",
+    "de": "no-01",
+    "para": "no-02",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-02",
+    "de": "no-02",
+    "para": "no-03",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-03",
+    "de": "no-03",
+    "para": "no-04",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-05",
+    "de": "no-05",
+    "para": "no-02",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-06",
+    "de": "no-02",
+    "para": "no-06",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-09",
+    "de": "no-07",
+    "para": "no-09",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-10",
+    "de": "no-09",
+    "para": "no-10",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-11",
+    "de": "no-10",
+    "para": "no-11",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-13",
+    "de": "no-11",
+    "para": "no-13",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-14",
+    "de": "no-13",
+    "para": "no-03",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-15",
+    "de": "no-03",
+    "para": "no-14",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-17",
+    "de": "no-15",
+    "para": "no-16",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-18",
+    "de": "no-16",
+    "para": "no-13",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-20",
+    "de": "no-17",
+    "para": "no-18",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-22",
+    "de": "no-18",
+    "para": "no-19",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-23",
+    "de": "no-19",
+    "para": "no-20",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-24",
+    "de": "no-20",
+    "para": "no-21",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-26",
+    "de": "no-22",
+    "para": "no-23",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-27",
+    "de": "no-23",
+    "para": "no-19",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-28",
+    "de": "no-21",
+    "para": "no-24",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-29",
+    "de": "no-24",
+    "para": "no-25",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-30",
+    "de": "no-25",
+    "para": "no-26",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-31",
+    "de": "no-25",
+    "para": "no-27",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-32",
+    "de": "no-27",
+    "para": "no-22",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-36",
+    "de": "no-30",
+    "para": "no-23",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-39",
+    "de": "no-31",
+    "para": "no-32",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-40",
+    "de": "no-32",
+    "para": "no-33",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-42",
+    "de": "no-33",
+    "para": "no-34",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-43",
+    "de": "no-34",
+    "para": "no-35",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-44",
+    "de": "no-35",
+    "para": "no-36",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-45",
+    "de": "no-36",
+    "para": "no-37",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-46",
+    "de": "no-37",
+    "para": "no-38",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-48",
+    "de": "no-38",
+    "para": "no-40",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-50",
+    "de": "no-40",
+    "para": "no-42",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-51",
+    "de": "no-42",
+    "para": "no-10",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-52",
+    "de": "no-39",
+    "para": "no-43",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-54",
+    "de": "no-43",
+    "para": "no-44",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-55",
+    "de": "no-44",
+    "para": "no-16",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-56",
+    "de": "no-44",
+    "para": "no-13",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-57",
+    "de": "no-20",
+    "para": "no-45",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-58",
+    "de": "no-45",
+    "para": "no-46",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-59",
+    "de": "no-46",
+    "para": "no-47",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-60",
+    "de": "no-46",
+    "para": "no-48",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-63",
+    "de": "no-49",
+    "para": "no-50",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-64",
+    "de": "no-24",
+    "para": "no-51",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-65",
+    "de": "no-52",
+    "para": "no-53",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-66",
+    "de": "no-53",
+    "para": "no-32",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-67",
+    "de": "no-36",
+    "para": "no-54",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-69",
+    "de": "no-55",
+    "para": "no-56",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-72",
+    "de": "no-36",
+    "para": "no-57",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-73",
+    "de": "no-57",
+    "para": "no-58",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-75",
+    "de": "no-60",
+    "para": "no-61",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-76",
+    "de": "no-61",
+    "para": "no-08",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-78",
+    "de": "no-31",
+    "para": "no-62",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-79",
+    "de": "no-63",
+    "para": "no-64",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-80",
+    "de": "no-64",
+    "para": "no-59",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-81",
+    "de": "no-64",
+    "para": "no-61",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-82",
+    "de": "no-65",
+    "para": "no-12",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-83",
+    "de": "no-11",
+    "para": "no-66",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-84",
+    "de": "no-66",
+    "para": "no-12",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-85",
+    "de": "no-07",
+    "para": "no-67",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-86",
+    "de": "no-67",
+    "para": "no-06",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-87",
+    "de": "no-67",
+    "para": "no-08",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-88",
+    "de": "no-68",
+    "para": "no-15",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-89",
+    "de": "no-68",
+    "para": "no-14",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-90",
+    "de": "no-69",
+    "para": "no-18",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-91",
+    "de": "no-69",
+    "para": "no-15",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-93",
+    "de": "no-70",
+    "para": "no-18",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-94",
+    "de": "no-70",
+    "para": "no-71",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-95",
+    "de": "no-71",
+    "para": "no-72",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-96",
+    "de": "no-71",
+    "para": "no-30",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-97",
+    "de": "no-39",
+    "para": "no-73",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-98",
+    "de": "no-73",
+    "para": "no-74",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-99",
+    "de": "no-74",
+    "para": "no-75",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-100",
+    "de": "no-75",
+    "para": "no-43",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-101",
+    "de": "no-76",
+    "para": "no-77",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-102",
+    "de": "no-76",
+    "para": "no-73",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-103",
+    "de": "no-76",
+    "para": "no-38",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-104",
+    "de": "no-79",
+    "para": "no-78",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-105",
+    "de": "no-79",
+    "para": "no-80",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-106",
+    "de": "no-54",
+    "para": "no-79",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-107",
+    "de": "no-55",
+    "para": "no-79",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-108",
+    "de": "no-81",
+    "para": "no-16",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-109",
+    "de": "no-81",
+    "para": "no-56",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-110",
+    "de": "no-87",
+    "para": "no-04",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-111",
+    "de": "no-87",
+    "para": "no-89",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-112",
+    "de": "no-89",
+    "para": "no-88",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-113",
+    "de": "no-98",
+    "para": "no-04",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-114",
+    "de": "no-49",
+    "para": "no-98",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-115",
+    "de": "no-49",
+    "para": "no-05",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-116",
+    "de": "no-88",
+    "para": "no-45",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-117",
+    "de": "no-21",
+    "para": "no-90",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-118",
+    "de": "no-90",
+    "para": "no-91",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-119",
+    "de": "no-91",
+    "para": "no-92",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-120",
+    "de": "no-92",
+    "para": "no-93",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-121",
+    "de": "no-93",
+    "para": "no-94",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-122",
+    "de": "no-94",
+    "para": "no-95",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-123",
+    "de": "no-95",
+    "para": "no-22",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-124",
+    "de": "no-97",
+    "para": "no-26",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-125",
+    "de": "no-29",
+    "para": "no-97",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-126",
+    "de": "no-27",
+    "para": "no-96",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-127",
+    "de": "no-96",
+    "para": "no-28",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-128",
+    "de": "no-33",
+    "para": "no-99",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-129",
+    "de": "no-99",
+    "para": "no-17",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-130",
+    "de": "no-17",
+    "para": "no-83",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-131",
+    "de": "no-83",
+    "para": "no-82",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-132",
+    "de": "no-82",
+    "para": "no-56",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-133",
+    "de": "no-17",
+    "para": "no-84",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-134",
+    "de": "no-84",
+    "para": "no-85",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-135",
+    "de": "no-85",
+    "para": "no-86",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-136",
+    "de": "no-86",
+    "para": "no-31",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-137",
+    "de": "no-100",
+    "para": "no-53",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-138",
+    "de": "no-100",
+    "para": "no-101",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-139",
+    "de": "no-101",
+    "para": "no-52",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-140",
+    "de": "no-86",
+    "para": "no-102",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-141",
+    "de": "no-102",
+    "para": "no-30",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  },
+  {
+    "id": "aresta-142",
+    "de": "no-57",
+    "para": "no-103",
+    "largura": 12,
+    "acessivel": true,
+    "observacao": ""
+  }
+]

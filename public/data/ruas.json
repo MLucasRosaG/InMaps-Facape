@@ -1,0 +1,119 @@
+[
+  {
+    "id": "rua-01",
+    "nome": "Via 01",
+    "tipo": "via",
+    "posicao": {
+      "x": 1008,
+      "y": 626
+    },
+    "largura": 746,
+    "altura": 60,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rua-02",
+    "nome": "Via 02",
+    "tipo": "via",
+    "posicao": {
+      "x": 1342,
+      "y": 687
+    },
+    "largura": 98,
+    "altura": 61,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rua-03",
+    "nome": "Via 03",
+    "tipo": "via",
+    "posicao": {
+      "x": 1052,
+      "y": 740
+    },
+    "largura": 674,
+    "altura": 59,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rua-04",
+    "nome": "Via 04",
+    "tipo": "via",
+    "posicao": {
+      "x": 696,
+      "y": 739
+    },
+    "largura": 35,
+    "altura": 43,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rua-05",
+    "nome": "Via 05",
+    "tipo": "via",
+    "posicao": {
+      "x": 1402,
+      "y": 607
+    },
+    "largura": 18,
+    "altura": 360,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rua-06",
+    "nome": "Via 06",
+    "tipo": "via",
+    "posicao": {
+      "x": 1522,
+      "y": 321
+    },
+    "largura": 258,
+    "altura": 213,
+    "rotacao": 0,
+    "observacao": ""
+  },
+  {
+    "id": "rua-07",
+    "nome": "Via 07",
+    "tipo": "via",
+    "posicao": {
+      "x": 667,
+      "y": 369
+    },
+    "largura": 268,
+    "altura": 70,
+    "rotacao": 90,
+    "observacao": ""
+  },
+  {
+    "id": "rua-08",
+    "nome": "Via 08",
+    "tipo": "via",
+    "posicao": {
+      "x": 656,
+      "y": 550
+    },
+    "largura": 93,
+    "altura": 47,
+    "rotacao": 90,
+    "observacao": ""
+  },
+  {
+    "id": "rua-09",
+    "nome": "Via 09",
+    "tipo": "via",
+    "posicao": {
+      "x": 654,
+      "y": 779
+    },
+    "largura": 46,
+    "altura": 245,
+    "rotacao": 0,
+    "observacao": ""
+  }
+]

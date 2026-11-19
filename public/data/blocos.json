@@ -1,1 +1,210 @@
-﻿[]
+[
+  {
+    "id": "bloco-01",
+    "nome": "Bloco de Direito",
+    "descricao": "Bloco do curso de Direito, com salas de aula e ambientes de apoio às atividades do curso.",
+    "posicao": {
+      "x": 1515,
+      "y": 72
+    },
+    "largura": 268,
+    "altura": 69,
+    "rotacao": 0,
+    "acessivel": true
+  },
+  {
+    "id": "bloco-02",
+    "nome": "Bloco Computação",
+    "descricao": "Bloco do curso de Computação, onde ficam as salas de aula, os laboratórios de informática e a coordenação do curso.",
+    "posicao": {
+      "x": 1245,
+      "y": 113
+    },
+    "largura": 274,
+    "altura": 153,
+    "rotacao": 0,
+    "acessivel": true
+  },
+  {
+    "id": "bloco-03",
+    "nome": "Biblioteca",
+    "descricao": "Biblioteca da faculdade, com acervo para consulta e empréstimo e espaço para estudo individual e em grupo.",
+    "posicao": {
+      "x": 1506,
+      "y": 622
+    },
+    "largura": 232,
+    "altura": 385,
+    "rotacao": 0,
+    "acessivel": true
+  },
+  {
+    "id": "bloco-04",
+    "nome": "Estacionamento",
+    "descricao": "Estacionamento da faculdade, para veículos de alunos, professores, funcionários e visitantes.",
+    "posicao": {
+      "x": 354,
+      "y": 577
+    },
+    "largura": 554,
+    "altura": 478,
+    "rotacao": 0,
+    "acessivel": true
+  },
+  {
+    "id": "bloco-05",
+    "nome": "Bloco Contabeis",
+    "descricao": "Bloco do curso de Ciências Contábeis, com salas de aula e o laboratório do curso.",
+    "posicao": {
+      "x": 1523,
+      "y": 160
+    },
+    "largura": 262,
+    "altura": 69,
+    "rotacao": 0,
+    "acessivel": true
+  },
+  {
+    "id": "bloco-06",
+    "nome": "Espaço Convivência",
+    "descricao": "Espaço de convivência para descanso, encontros e intervalos entre as aulas.",
+    "posicao": {
+      "x": 961,
+      "y": 145
+    },
+    "largura": 121,
+    "altura": 181,
+    "rotacao": 0,
+    "acessivel": true
+  },
+  {
+    "id": "bloco-07",
+    "nome": "Bloco Psicologia",
+    "descricao": "Bloco do curso de Psicologia, com salas de aula e a coordenação do curso.",
+    "posicao": {
+      "x": 1047,
+      "y": 145
+    },
+    "largura": 50,
+    "altura": 216,
+    "rotacao": 0,
+    "acessivel": true
+  },
+  {
+    "id": "bloco-08",
+    "nome": "Direção Geral",
+    "descricao": "Direção Geral da faculdade, responsável pela gestão administrativa e acadêmica da instituição.",
+    "posicao": {
+      "x": 1055,
+      "y": 490
+    },
+    "largura": 61,
+    "altura": 65,
+    "rotacao": 0,
+    "acessivel": true
+  },
+  {
+    "id": "bloco-09",
+    "nome": "Bloco GTI",
+    "descricao": "Bloco de Gestão da Tecnologia da Informação (GTI), com salas de aula e ambientes de apoio ao curso.",
+    "posicao": {
+      "x": 1152,
+      "y": 306
+    },
+    "largura": 128,
+    "altura": 59,
+    "rotacao": 0,
+    "acessivel": true
+  },
+  {
+    "id": "bloco-10",
+    "nome": "Bloco Economia",
+    "descricao": "Bloco do curso de Economia, com salas de aula e ambientes de apoio ao curso.",
+    "posicao": {
+      "x": 1191,
+      "y": 230
+    },
+    "largura": 137,
+    "altura": 55,
+    "rotacao": 0,
+    "acessivel": true
+  },
+  {
+    "id": "bloco-11",
+    "nome": "Bloco Comex",
+    "descricao": "Bloco do curso de Comércio Exterior (Comex), com salas de aula e ambientes de apoio ao curso.",
+    "posicao": {
+      "x": 1321,
+      "y": 231
+    },
+    "largura": 121,
+    "altura": 58,
+    "rotacao": 0,
+    "acessivel": true
+  },
+  {
+    "id": "bloco-12",
+    "nome": "Bloco Coordenações",
+    "descricao": "Reúne as coordenações dos cursos e setores de atendimento ao aluno, como Bolsa e Estágio e Pós-Graduação.",
+    "posicao": {
+      "x": 1172,
+      "y": 490
+    },
+    "largura": 89,
+    "altura": 55,
+    "rotacao": 0,
+    "acessivel": true
+  },
+  {
+    "id": "bloco-13",
+    "nome": "Sala dos Professores",
+    "descricao": "Sala dos Professores, espaço de trabalho, reuniões e descanso do corpo docente.",
+    "posicao": {
+      "x": 1239,
+      "y": 506
+    },
+    "largura": 35,
+    "altura": 83,
+    "rotacao": 0,
+    "acessivel": true
+  },
+  {
+    "id": "bloco-14",
+    "nome": "NTI",
+    "descricao": "Núcleo de Tecnologia da Informação (NTI) da faculdade, responsável pela infraestrutura de TI, redes, sistemas e suporte técnico.",
+    "posicao": {
+      "x": 1147,
+      "y": 408
+    },
+    "largura": 138,
+    "altura": 63,
+    "rotacao": 0,
+    "acessivel": true
+  },
+  {
+    "id": "bloco-15",
+    "nome": "Bloco ADM",
+    "descricao": "Bloco de Administração, com salas de aula e ambientes de apoio ao curso e à gestão acadêmica.",
+    "posicao": {
+      "x": 807,
+      "y": 407
+    },
+    "largura": 173,
+    "altura": 59,
+    "rotacao": 0,
+    "acessivel": true
+  },
+  {
+    "id": "bloco-16",
+    "nome": "CAD",
+    "descricao": "Setor CAD da faculdade, voltado ao atendimento e ao apoio aos alunos.",
+    "posicao": {
+      "x": 990,
+      "y": 403
+    },
+    "largura": 150,
+    "altura": 81,
+    "rotacao": 0,
+    "acessivel": true
+  }
+]
